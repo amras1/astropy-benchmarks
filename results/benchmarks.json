@@ -1,0 +1,63 @@
+{
+    "csvbench.CSVSuite.time_read": {
+        "code": "def time_read(self):\n    ascii.read('benchmarks/files/data.csv', format='csv')\n", 
+        "goal_time": 2.0, 
+        "name": "csvbench.CSVSuite.time_read", 
+        "number": 0, 
+        "repeat": 3, 
+        "timeout": 60.0, 
+        "type": "time", 
+        "unit": "seconds"
+    }, 
+    "csvbench.CSVSuite.time_write": {
+        "code": "def time_write(self):\n    ascii.write(self.table, 'csvoutput.csv', Writer=ascii.Csv)\n", 
+        "goal_time": 2.0, 
+        "name": "csvbench.CSVSuite.time_write", 
+        "number": 0, 
+        "repeat": 3, 
+        "timeout": 60.0, 
+        "type": "time", 
+        "unit": "seconds"
+    }, 
+    "fixedwidthbench.FixedWidthSuite.time_read": {
+        "code": "def time_read(self):\n    ascii.read('benchmarks/files/data.txt', format='fixed_width')\n", 
+        "goal_time": 2.0, 
+        "name": "fixedwidthbench.FixedWidthSuite.time_read", 
+        "number": 0, 
+        "repeat": 3, 
+        "timeout": 60.0, 
+        "type": "time", 
+        "unit": "seconds"
+    }, 
+    "fixedwidthbench.FixedWidthSuite.time_write": {
+        "code": "def time_write(self):\n    ascii.write(self.table, 'fixedwidthoutput.txt', Writer=ascii.FixedWidth)\n", 
+        "goal_time": 2.0, 
+        "name": "fixedwidthbench.FixedWidthSuite.time_write", 
+        "number": 0, 
+        "repeat": 3, 
+        "timeout": 60.0, 
+        "type": "time", 
+        "unit": "seconds"
+    }, 
+    "tabseparatedbench.TabSeparatedSuite.time_read": {
+        "code": "def time_read(self):\n    ascii.read('benchmarks/files/tabdata.txt', format='tab')\n", 
+        "goal_time": 2.0, 
+        "name": "tabseparatedbench.TabSeparatedSuite.time_read", 
+        "number": 0, 
+        "repeat": 3, 
+        "timeout": 60.0, 
+        "type": "time", 
+        "unit": "seconds"
+    }, 
+    "tabseparatedbench.TabSeparatedSuite.time_write": {
+        "code": "def time_write(self):\n    ascii.write(self.table, 'tabseparatedoutput.txt', Writer=ascii.Tab)\n", 
+        "goal_time": 2.0, 
+        "name": "tabseparatedbench.TabSeparatedSuite.time_write", 
+        "number": 0, 
+        "repeat": 3, 
+        "timeout": 60.0, 
+        "type": "time", 
+        "unit": "seconds"
+    }, 
+    "version": 1
+}

@@ -1,0 +1,29 @@
+{
+    "commit_hash": "57cebe1cc6119009654fabee119e1948038eb16d", 
+    "date": 1390495531000, 
+    "params": {
+        "Cython": null, 
+        "arch": "x86_64", 
+        "cpu": "Intel(R) Core(TM) i7-4810MQ CPU @ 2.80GHz (8 cores)", 
+        "machine": "michael-Gazelle-Professional", 
+        "numpy": "1.8", 
+        "os": "Linux 3.13.0-24-generic", 
+        "python": "2.7", 
+        "ram": "8GB"
+    }, 
+    "profiles": {}, 
+    "python": "2.7", 
+    "requirements": {
+        "Cython": null, 
+        "numpy": "1.8"
+    }, 
+    "results": {
+        "benchmarks.mem_unit": 728, 
+        "benchmarks.time_simple_unit_parse": 7.94632911682129e-05, 
+        "benchmarks.time_unit_compose": 0.00023526287078857422, 
+        "benchmarks.time_unit_parse": 0.00022543597221374512, 
+        "benchmarks.time_unit_to": 2.963089942932129e-06, 
+        "benchmarks.time_very_simple_unit_parse": 5.854940414428711e-06
+    }, 
+    "version": 1
+}
