@@ -58,6 +58,24 @@ class ASCIISuite:
     def time_tab_read_float(self):
         self.read('tab', 'float')
 
+    def time_noheader_read_string(self):
+        self.read('no_header', 'string')
+
+    def time_noheader_read_int(self):
+        self.read('no_header', 'int')
+
+    def time_noheader_read_float(self):
+        self.read('no_header', 'float')
+
+    def time_commented_header_read_string(self):
+        self.read('commented_header', 'string')
+
+    def time_commented_header_read_int(self):
+        self.read('commented_header', 'int')
+
+    def time_commented_header_read_float(self):
+        self.read('commented_header', 'float')
+
     def time_csv_write_string(self):
         self.write('csv', 'string')
 
@@ -93,3 +111,21 @@ class ASCIISuite:
 
     def time_tab_write_float(self):
         self.write('tab', 'float')
+
+    def time_noheader_write_string(self):
+        self.write('no_header', 'string')
+
+    def time_noheader_write_int(self):
+        self.write('no_header', 'int')
+
+    def time_noheader_write_float(self):
+        self.write('no_header', 'float')
+
+    def time_commented_header_write_string(self):
+        self.write('commented_header', 'string')
+
+    def time_commented_header_write_int(self):
+        self.write('commented_header', 'int')
+
+    def time_commented_header_write_float(self):
+        self.write('commented_header', 'float')
