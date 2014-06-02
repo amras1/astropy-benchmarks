@@ -3,12 +3,6 @@ from astropy.io import ascii
 class ASCIISuite:
     def setup(self):
         self.tables = {}
-        for file_format in ('csv', 'rdb', 'fixed_width', 'fixed_width_no_header',
-                'fixed_width_two_line', 'tab', 'no_header', 'commented_header',
-                'basic', 'sextractor'):
-            for data_type in ('string', 'int', 'float'):
-                self.tables[(file_format, data_type)] = self.read(
-                    file_format, data_type)
         self.writers = {
             'csv': ascii.Csv,
             'rdb': ascii.Rdb,
@@ -18,9 +12,12 @@ class ASCIISuite:
             'tab': ascii.Tab,
             'no_header': ascii.NoHeader,
             'commented_header': ascii.CommentedHeader,
-            'basic': ascii.Basic,
-            'sextractor': ascii.SExtractor
+            'basic': ascii.Basic
             }
+        for file_format in self.writers:
+            for data_type in ('string', 'int', 'float'):
+                self.tables[(file_format, data_type)] = self.read(
+                    file_format, data_type)
                 
     def read(self, file_format, data_type):
         return ascii.read('benchmarks/files/{}/{}.txt'.format(file_format,
