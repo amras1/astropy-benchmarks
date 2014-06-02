@@ -3,8 +3,9 @@ from astropy.io import ascii
 class ASCIISuite:
     def setup(self):
         self.tables = {}
-        for file_format in ('csv', 'rdb', 'fixed_width', 'tab',
-                            'no_header', 'commented_header'):
+        for file_format in ('csv', 'rdb', 'fixed_width', 'fixed_width_no_header',
+                'fixed_width_two_line', 'tab', 'no_header', 'commented_header',
+                'basic', 'sextractor'):
             for data_type in ('string', 'int', 'float'):
                 self.tables[(file_format, data_type)] = self.read(
                     file_format, data_type)
@@ -12,9 +13,13 @@ class ASCIISuite:
             'csv': ascii.Csv,
             'rdb': ascii.Rdb,
             'fixed_width': ascii.FixedWidth,
+            'fixed_width_no_header': ascii.FixedWidthNoHeader,
+            'fixed_width_two_line': ascii.FixedWidthTwoLine,
             'tab': ascii.Tab,
             'no_header': ascii.NoHeader,
-            'commented_header': ascii.CommentedHeader
+            'commented_header': ascii.CommentedHeader,
+            'basic': ascii.Basic,
+            'sextractor': ascii.SExtractor
             }
                 
     def read(self, file_format, data_type):
@@ -52,6 +57,24 @@ class ASCIISuite:
     def time_fixedwidth_read_float(self):
         self.read('fixed_width', 'float')
 
+    def time_fixedwidth_no_header_read_string(self):
+        self.read('fixed_width_no_header', 'string')
+
+    def time_fixedwidth_no_header_read_int(self):
+        self.read('fixed_width_no_header', 'int')
+
+    def time_fixedwidth_no_header_read_float(self):
+        self.read('fixed_width_no_header', 'float')
+
+    def time_fixedwidth_two_line_read_string(self):
+        self.read('fixed_width_two_line', 'string')
+
+    def time_fixedwidth_two_line_read_int(self):
+        self.read('fixed_width_two_line', 'int')
+
+    def time_fixedwidth_two_line_read_float(self):
+        self.read('fixed_width_two_line', 'float')
+
     def time_tab_read_string(self):
         self.read('tab', 'string')
 
@@ -78,6 +101,24 @@ class ASCIISuite:
 
     def time_commented_header_read_float(self):
         self.read('commented_header', 'float')
+
+    def time_basic_read_string(self):
+        self.read('basic', 'string')
+
+    def time_basic_read_int(self):
+        self.read('basic', 'int')
+
+    def time_basic_read_float(self):
+        self.read('basic', 'float')
+
+    def time_sextractor_read_string(self):
+        self.read('sextractor', 'string')
+
+    def time_sextractor_read_int(self):
+        self.read('sextractor', 'int')
+
+    def time_sextractor_read_float(self):
+        self.read('sextractor', 'float')
 
     def time_csv_write_string(self):
         self.write('csv', 'string')
@@ -106,6 +147,24 @@ class ASCIISuite:
     def time_fixedwidth_write_float(self):
         self.write('fixed_width', 'float')
 
+    def time_fixedwidth_no_header_write_string(self):
+        self.write('fixed_width_no_header', 'string')
+
+    def time_fixedwidth_no_header_write_int(self):
+        self.write('fixed_width_no_header', 'int')
+
+    def time_fixedwidth_no_header_write_float(self):
+        self.write('fixed_width_no_header', 'float')
+
+    def time_fixedwidth_two_line_write_string(self):
+        self.write('fixed_width_no_header', 'string')
+
+    def time_fixedwidth_two_line_write_int(self):
+        self.write('fixed_width_no_header', 'int')
+
+    def time_fixedwidth_two_line_write_float(self):
+        self.write('fixed_width_no_header', 'float')
+
     def time_tab_write_string(self):
         self.write('tab', 'string')
 
@@ -132,3 +191,12 @@ class ASCIISuite:
 
     def time_commented_header_write_float(self):
         self.write('commented_header', 'float')
+
+    def time_basic_write_string(self):
+        self.write('basic', 'string')
+
+    def time_basic_write_int(self):
+        self.write('basic', 'int')
+
+    def time_basic_write_float(self):
+        self.write('basic', 'float')
