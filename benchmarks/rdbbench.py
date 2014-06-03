@@ -1,10 +1,11 @@
-from astropy.io import ascii
+from astropy.io.ascii import basic
 
 class RDBSuite:
     def setup(self):
-        self.header = ascii.RdbHeader()
+        self.header = basic.RdbHeader()
+        self.header.splitter.delimiter = '\t'
         f = open('benchmarks/files/rdb/string.txt')
-        self.lines = f.read().split('\n')[2:]
+        self.lines = f.read().split('\n')
         f.close()
     def time_get_cols(self):
         self.header.get_cols(self.lines)
