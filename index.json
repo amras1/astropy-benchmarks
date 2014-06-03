@@ -1,9 +1,699 @@
 {
     "benchmarks": {
+        "asciibench.ASCIISuite.time_basic_read_float": {
+            "code": "def time_basic_read_float(self):\n    self.read('basic', 'float')\n", 
+            "goal_time": 2.0, 
+            "name": "asciibench.ASCIISuite.time_basic_read_float", 
+            "number": 0, 
+            "repeat": 3, 
+            "timeout": 60.0, 
+            "type": "time", 
+            "unit": "seconds"
+        }, 
+        "asciibench.ASCIISuite.time_basic_read_int": {
+            "code": "def time_basic_read_int(self):\n    self.read('basic', 'int')\n", 
+            "goal_time": 2.0, 
+            "name": "asciibench.ASCIISuite.time_basic_read_int", 
+            "number": 0, 
+            "repeat": 3, 
+            "timeout": 60.0, 
+            "type": "time", 
+            "unit": "seconds"
+        }, 
+        "asciibench.ASCIISuite.time_basic_read_string": {
+            "code": "def time_basic_read_string(self):\n    self.read('basic', 'string')\n", 
+            "goal_time": 2.0, 
+            "name": "asciibench.ASCIISuite.time_basic_read_string", 
+            "number": 0, 
+            "repeat": 3, 
+            "timeout": 60.0, 
+            "type": "time", 
+            "unit": "seconds"
+        }, 
+        "asciibench.ASCIISuite.time_basic_write_float": {
+            "code": "def time_basic_write_float(self):\n    self.write('basic', 'float')\n", 
+            "goal_time": 2.0, 
+            "name": "asciibench.ASCIISuite.time_basic_write_float", 
+            "number": 0, 
+            "repeat": 3, 
+            "timeout": 60.0, 
+            "type": "time", 
+            "unit": "seconds"
+        }, 
+        "asciibench.ASCIISuite.time_basic_write_int": {
+            "code": "def time_basic_write_int(self):\n    self.write('basic', 'int')\n", 
+            "goal_time": 2.0, 
+            "name": "asciibench.ASCIISuite.time_basic_write_int", 
+            "number": 0, 
+            "repeat": 3, 
+            "timeout": 60.0, 
+            "type": "time", 
+            "unit": "seconds"
+        }, 
+        "asciibench.ASCIISuite.time_basic_write_string": {
+            "code": "def time_basic_write_string(self):\n    self.write('basic', 'string')\n", 
+            "goal_time": 2.0, 
+            "name": "asciibench.ASCIISuite.time_basic_write_string", 
+            "number": 0, 
+            "repeat": 3, 
+            "timeout": 60.0, 
+            "type": "time", 
+            "unit": "seconds"
+        }, 
+        "asciibench.ASCIISuite.time_commented_header_read_float": {
+            "code": "def time_commented_header_read_float(self):\n    self.read('commented_header', 'float')\n", 
+            "goal_time": 2.0, 
+            "name": "asciibench.ASCIISuite.time_commented_header_read_float", 
+            "number": 0, 
+            "repeat": 3, 
+            "timeout": 60.0, 
+            "type": "time", 
+            "unit": "seconds"
+        }, 
+        "asciibench.ASCIISuite.time_commented_header_read_int": {
+            "code": "def time_commented_header_read_int(self):\n    self.read('commented_header', 'int')\n", 
+            "goal_time": 2.0, 
+            "name": "asciibench.ASCIISuite.time_commented_header_read_int", 
+            "number": 0, 
+            "repeat": 3, 
+            "timeout": 60.0, 
+            "type": "time", 
+            "unit": "seconds"
+        }, 
+        "asciibench.ASCIISuite.time_commented_header_read_string": {
+            "code": "def time_commented_header_read_string(self):\n    self.read('commented_header', 'string')\n", 
+            "goal_time": 2.0, 
+            "name": "asciibench.ASCIISuite.time_commented_header_read_string", 
+            "number": 0, 
+            "repeat": 3, 
+            "timeout": 60.0, 
+            "type": "time", 
+            "unit": "seconds"
+        }, 
+        "asciibench.ASCIISuite.time_commented_header_write_float": {
+            "code": "def time_commented_header_write_float(self):\n    self.write('commented_header', 'float')\n", 
+            "goal_time": 2.0, 
+            "name": "asciibench.ASCIISuite.time_commented_header_write_float", 
+            "number": 0, 
+            "repeat": 3, 
+            "timeout": 60.0, 
+            "type": "time", 
+            "unit": "seconds"
+        }, 
+        "asciibench.ASCIISuite.time_commented_header_write_int": {
+            "code": "def time_commented_header_write_int(self):\n    self.write('commented_header', 'int')\n", 
+            "goal_time": 2.0, 
+            "name": "asciibench.ASCIISuite.time_commented_header_write_int", 
+            "number": 0, 
+            "repeat": 3, 
+            "timeout": 60.0, 
+            "type": "time", 
+            "unit": "seconds"
+        }, 
+        "asciibench.ASCIISuite.time_commented_header_write_string": {
+            "code": "def time_commented_header_write_string(self):\n    self.write('commented_header', 'string')\n", 
+            "goal_time": 2.0, 
+            "name": "asciibench.ASCIISuite.time_commented_header_write_string", 
+            "number": 0, 
+            "repeat": 3, 
+            "timeout": 60.0, 
+            "type": "time", 
+            "unit": "seconds"
+        }, 
+        "asciibench.ASCIISuite.time_csv_read_float": {
+            "code": "def time_csv_read_float(self):\n    self.read('csv', 'float')\n", 
+            "goal_time": 2.0, 
+            "name": "asciibench.ASCIISuite.time_csv_read_float", 
+            "number": 0, 
+            "repeat": 3, 
+            "timeout": 60.0, 
+            "type": "time", 
+            "unit": "seconds"
+        }, 
+        "asciibench.ASCIISuite.time_csv_read_int": {
+            "code": "def time_csv_read_int(self):\n    self.read('csv', 'int')\n", 
+            "goal_time": 2.0, 
+            "name": "asciibench.ASCIISuite.time_csv_read_int", 
+            "number": 0, 
+            "repeat": 3, 
+            "timeout": 60.0, 
+            "type": "time", 
+            "unit": "seconds"
+        }, 
+        "asciibench.ASCIISuite.time_csv_read_string": {
+            "code": "def time_csv_read_string(self):\n    self.read('csv', 'string')\n", 
+            "goal_time": 2.0, 
+            "name": "asciibench.ASCIISuite.time_csv_read_string", 
+            "number": 0, 
+            "repeat": 3, 
+            "timeout": 60.0, 
+            "type": "time", 
+            "unit": "seconds"
+        }, 
+        "asciibench.ASCIISuite.time_csv_write_float": {
+            "code": "def time_csv_write_float(self):\n    self.write('csv', 'float')\n", 
+            "goal_time": 2.0, 
+            "name": "asciibench.ASCIISuite.time_csv_write_float", 
+            "number": 0, 
+            "repeat": 3, 
+            "timeout": 60.0, 
+            "type": "time", 
+            "unit": "seconds"
+        }, 
+        "asciibench.ASCIISuite.time_csv_write_int": {
+            "code": "def time_csv_write_int(self):\n    self.write('csv', 'int')\n", 
+            "goal_time": 2.0, 
+            "name": "asciibench.ASCIISuite.time_csv_write_int", 
+            "number": 0, 
+            "repeat": 3, 
+            "timeout": 60.0, 
+            "type": "time", 
+            "unit": "seconds"
+        }, 
+        "asciibench.ASCIISuite.time_csv_write_string": {
+            "code": "def time_csv_write_string(self):\n    self.write('csv', 'string')\n", 
+            "goal_time": 2.0, 
+            "name": "asciibench.ASCIISuite.time_csv_write_string", 
+            "number": 0, 
+            "repeat": 3, 
+            "timeout": 60.0, 
+            "type": "time", 
+            "unit": "seconds"
+        }, 
+        "asciibench.ASCIISuite.time_fixedwidth_no_header_read_float": {
+            "code": "def time_fixedwidth_no_header_read_float(self):\n    self.read('fixed_width_no_header', 'float')\n", 
+            "goal_time": 2.0, 
+            "name": "asciibench.ASCIISuite.time_fixedwidth_no_header_read_float", 
+            "number": 0, 
+            "repeat": 3, 
+            "timeout": 60.0, 
+            "type": "time", 
+            "unit": "seconds"
+        }, 
+        "asciibench.ASCIISuite.time_fixedwidth_no_header_read_int": {
+            "code": "def time_fixedwidth_no_header_read_int(self):\n    self.read('fixed_width_no_header', 'int')\n", 
+            "goal_time": 2.0, 
+            "name": "asciibench.ASCIISuite.time_fixedwidth_no_header_read_int", 
+            "number": 0, 
+            "repeat": 3, 
+            "timeout": 60.0, 
+            "type": "time", 
+            "unit": "seconds"
+        }, 
+        "asciibench.ASCIISuite.time_fixedwidth_no_header_read_string": {
+            "code": "def time_fixedwidth_no_header_read_string(self):\n    self.read('fixed_width_no_header', 'string')\n", 
+            "goal_time": 2.0, 
+            "name": "asciibench.ASCIISuite.time_fixedwidth_no_header_read_string", 
+            "number": 0, 
+            "repeat": 3, 
+            "timeout": 60.0, 
+            "type": "time", 
+            "unit": "seconds"
+        }, 
+        "asciibench.ASCIISuite.time_fixedwidth_no_header_write_float": {
+            "code": "def time_fixedwidth_no_header_write_float(self):\n    self.write('fixed_width_no_header', 'float')\n", 
+            "goal_time": 2.0, 
+            "name": "asciibench.ASCIISuite.time_fixedwidth_no_header_write_float", 
+            "number": 0, 
+            "repeat": 3, 
+            "timeout": 60.0, 
+            "type": "time", 
+            "unit": "seconds"
+        }, 
+        "asciibench.ASCIISuite.time_fixedwidth_no_header_write_int": {
+            "code": "def time_fixedwidth_no_header_write_int(self):\n    self.write('fixed_width_no_header', 'int')\n", 
+            "goal_time": 2.0, 
+            "name": "asciibench.ASCIISuite.time_fixedwidth_no_header_write_int", 
+            "number": 0, 
+            "repeat": 3, 
+            "timeout": 60.0, 
+            "type": "time", 
+            "unit": "seconds"
+        }, 
+        "asciibench.ASCIISuite.time_fixedwidth_no_header_write_string": {
+            "code": "def time_fixedwidth_no_header_write_string(self):\n    self.write('fixed_width_no_header', 'string')\n", 
+            "goal_time": 2.0, 
+            "name": "asciibench.ASCIISuite.time_fixedwidth_no_header_write_string", 
+            "number": 0, 
+            "repeat": 3, 
+            "timeout": 60.0, 
+            "type": "time", 
+            "unit": "seconds"
+        }, 
+        "asciibench.ASCIISuite.time_fixedwidth_read_float": {
+            "code": "def time_fixedwidth_read_float(self):\n    self.read('fixed_width', 'float')\n", 
+            "goal_time": 2.0, 
+            "name": "asciibench.ASCIISuite.time_fixedwidth_read_float", 
+            "number": 0, 
+            "repeat": 3, 
+            "timeout": 60.0, 
+            "type": "time", 
+            "unit": "seconds"
+        }, 
+        "asciibench.ASCIISuite.time_fixedwidth_read_int": {
+            "code": "def time_fixedwidth_read_int(self):\n    self.read('fixed_width', 'int')\n", 
+            "goal_time": 2.0, 
+            "name": "asciibench.ASCIISuite.time_fixedwidth_read_int", 
+            "number": 0, 
+            "repeat": 3, 
+            "timeout": 60.0, 
+            "type": "time", 
+            "unit": "seconds"
+        }, 
+        "asciibench.ASCIISuite.time_fixedwidth_read_string": {
+            "code": "def time_fixedwidth_read_string(self):\n    self.read('fixed_width', 'string')\n", 
+            "goal_time": 2.0, 
+            "name": "asciibench.ASCIISuite.time_fixedwidth_read_string", 
+            "number": 0, 
+            "repeat": 3, 
+            "timeout": 60.0, 
+            "type": "time", 
+            "unit": "seconds"
+        }, 
+        "asciibench.ASCIISuite.time_fixedwidth_two_line_read_float": {
+            "code": "def time_fixedwidth_two_line_read_float(self):\n    self.read('fixed_width_two_line', 'float')\n", 
+            "goal_time": 2.0, 
+            "name": "asciibench.ASCIISuite.time_fixedwidth_two_line_read_float", 
+            "number": 0, 
+            "repeat": 3, 
+            "timeout": 60.0, 
+            "type": "time", 
+            "unit": "seconds"
+        }, 
+        "asciibench.ASCIISuite.time_fixedwidth_two_line_read_int": {
+            "code": "def time_fixedwidth_two_line_read_int(self):\n    self.read('fixed_width_two_line', 'int')\n", 
+            "goal_time": 2.0, 
+            "name": "asciibench.ASCIISuite.time_fixedwidth_two_line_read_int", 
+            "number": 0, 
+            "repeat": 3, 
+            "timeout": 60.0, 
+            "type": "time", 
+            "unit": "seconds"
+        }, 
+        "asciibench.ASCIISuite.time_fixedwidth_two_line_read_string": {
+            "code": "def time_fixedwidth_two_line_read_string(self):\n    self.read('fixed_width_two_line', 'string')\n", 
+            "goal_time": 2.0, 
+            "name": "asciibench.ASCIISuite.time_fixedwidth_two_line_read_string", 
+            "number": 0, 
+            "repeat": 3, 
+            "timeout": 60.0, 
+            "type": "time", 
+            "unit": "seconds"
+        }, 
+        "asciibench.ASCIISuite.time_fixedwidth_two_line_write_float": {
+            "code": "def time_fixedwidth_two_line_write_float(self):\n    self.write('fixed_width_no_header', 'float')\n", 
+            "goal_time": 2.0, 
+            "name": "asciibench.ASCIISuite.time_fixedwidth_two_line_write_float", 
+            "number": 0, 
+            "repeat": 3, 
+            "timeout": 60.0, 
+            "type": "time", 
+            "unit": "seconds"
+        }, 
+        "asciibench.ASCIISuite.time_fixedwidth_two_line_write_int": {
+            "code": "def time_fixedwidth_two_line_write_int(self):\n    self.write('fixed_width_no_header', 'int')\n", 
+            "goal_time": 2.0, 
+            "name": "asciibench.ASCIISuite.time_fixedwidth_two_line_write_int", 
+            "number": 0, 
+            "repeat": 3, 
+            "timeout": 60.0, 
+            "type": "time", 
+            "unit": "seconds"
+        }, 
+        "asciibench.ASCIISuite.time_fixedwidth_two_line_write_string": {
+            "code": "def time_fixedwidth_two_line_write_string(self):\n    self.write('fixed_width_no_header', 'string')\n", 
+            "goal_time": 2.0, 
+            "name": "asciibench.ASCIISuite.time_fixedwidth_two_line_write_string", 
+            "number": 0, 
+            "repeat": 3, 
+            "timeout": 60.0, 
+            "type": "time", 
+            "unit": "seconds"
+        }, 
+        "asciibench.ASCIISuite.time_fixedwidth_write_float": {
+            "code": "def time_fixedwidth_write_float(self):\n    self.write('fixed_width', 'float')\n", 
+            "goal_time": 2.0, 
+            "name": "asciibench.ASCIISuite.time_fixedwidth_write_float", 
+            "number": 0, 
+            "repeat": 3, 
+            "timeout": 60.0, 
+            "type": "time", 
+            "unit": "seconds"
+        }, 
+        "asciibench.ASCIISuite.time_fixedwidth_write_int": {
+            "code": "def time_fixedwidth_write_int(self):\n    self.write('fixed_width', 'int')\n", 
+            "goal_time": 2.0, 
+            "name": "asciibench.ASCIISuite.time_fixedwidth_write_int", 
+            "number": 0, 
+            "repeat": 3, 
+            "timeout": 60.0, 
+            "type": "time", 
+            "unit": "seconds"
+        }, 
+        "asciibench.ASCIISuite.time_fixedwidth_write_string": {
+            "code": "def time_fixedwidth_write_string(self):\n    self.write('fixed_width', 'string')\n", 
+            "goal_time": 2.0, 
+            "name": "asciibench.ASCIISuite.time_fixedwidth_write_string", 
+            "number": 0, 
+            "repeat": 3, 
+            "timeout": 60.0, 
+            "type": "time", 
+            "unit": "seconds"
+        }, 
+        "asciibench.ASCIISuite.time_ipac_read_float": {
+            "code": "def time_ipac_read_float(self):\n    self.read('ipac', 'float')\n", 
+            "goal_time": 2.0, 
+            "name": "asciibench.ASCIISuite.time_ipac_read_float", 
+            "number": 0, 
+            "repeat": 3, 
+            "timeout": 60.0, 
+            "type": "time", 
+            "unit": "seconds"
+        }, 
+        "asciibench.ASCIISuite.time_ipac_read_int": {
+            "code": "def time_ipac_read_int(self):\n    self.read('ipac', 'int')\n", 
+            "goal_time": 2.0, 
+            "name": "asciibench.ASCIISuite.time_ipac_read_int", 
+            "number": 0, 
+            "repeat": 3, 
+            "timeout": 60.0, 
+            "type": "time", 
+            "unit": "seconds"
+        }, 
+        "asciibench.ASCIISuite.time_ipac_read_string": {
+            "code": "def time_ipac_read_string(self):\n    self.read('ipac', 'string')\n", 
+            "goal_time": 2.0, 
+            "name": "asciibench.ASCIISuite.time_ipac_read_string", 
+            "number": 0, 
+            "repeat": 3, 
+            "timeout": 60.0, 
+            "type": "time", 
+            "unit": "seconds"
+        }, 
+        "asciibench.ASCIISuite.time_ipac_write_float": {
+            "code": "def time_ipac_write_float(self):\n    self.write('ipac', 'float')\n", 
+            "goal_time": 2.0, 
+            "name": "asciibench.ASCIISuite.time_ipac_write_float", 
+            "number": 0, 
+            "repeat": 3, 
+            "timeout": 60.0, 
+            "type": "time", 
+            "unit": "seconds"
+        }, 
+        "asciibench.ASCIISuite.time_ipac_write_int": {
+            "code": "def time_ipac_write_int(self):\n    self.write('ipac', 'int')\n", 
+            "goal_time": 2.0, 
+            "name": "asciibench.ASCIISuite.time_ipac_write_int", 
+            "number": 0, 
+            "repeat": 3, 
+            "timeout": 60.0, 
+            "type": "time", 
+            "unit": "seconds"
+        }, 
+        "asciibench.ASCIISuite.time_ipac_write_string": {
+            "code": "def time_ipac_write_string(self):\n    self.write('ipac', 'string')\n", 
+            "goal_time": 2.0, 
+            "name": "asciibench.ASCIISuite.time_ipac_write_string", 
+            "number": 0, 
+            "repeat": 3, 
+            "timeout": 60.0, 
+            "type": "time", 
+            "unit": "seconds"
+        }, 
+        "asciibench.ASCIISuite.time_noheader_read_float": {
+            "code": "def time_noheader_read_float(self):\n    self.read('no_header', 'float')\n", 
+            "goal_time": 2.0, 
+            "name": "asciibench.ASCIISuite.time_noheader_read_float", 
+            "number": 0, 
+            "repeat": 3, 
+            "timeout": 60.0, 
+            "type": "time", 
+            "unit": "seconds"
+        }, 
+        "asciibench.ASCIISuite.time_noheader_read_int": {
+            "code": "def time_noheader_read_int(self):\n    self.read('no_header', 'int')\n", 
+            "goal_time": 2.0, 
+            "name": "asciibench.ASCIISuite.time_noheader_read_int", 
+            "number": 0, 
+            "repeat": 3, 
+            "timeout": 60.0, 
+            "type": "time", 
+            "unit": "seconds"
+        }, 
+        "asciibench.ASCIISuite.time_noheader_read_string": {
+            "code": "def time_noheader_read_string(self):\n    self.read('no_header', 'string')\n", 
+            "goal_time": 2.0, 
+            "name": "asciibench.ASCIISuite.time_noheader_read_string", 
+            "number": 0, 
+            "repeat": 3, 
+            "timeout": 60.0, 
+            "type": "time", 
+            "unit": "seconds"
+        }, 
+        "asciibench.ASCIISuite.time_noheader_write_float": {
+            "code": "def time_noheader_write_float(self):\n    self.write('no_header', 'float')\n", 
+            "goal_time": 2.0, 
+            "name": "asciibench.ASCIISuite.time_noheader_write_float", 
+            "number": 0, 
+            "repeat": 3, 
+            "timeout": 60.0, 
+            "type": "time", 
+            "unit": "seconds"
+        }, 
+        "asciibench.ASCIISuite.time_noheader_write_int": {
+            "code": "def time_noheader_write_int(self):\n    self.write('no_header', 'int')\n", 
+            "goal_time": 2.0, 
+            "name": "asciibench.ASCIISuite.time_noheader_write_int", 
+            "number": 0, 
+            "repeat": 3, 
+            "timeout": 60.0, 
+            "type": "time", 
+            "unit": "seconds"
+        }, 
+        "asciibench.ASCIISuite.time_noheader_write_string": {
+            "code": "def time_noheader_write_string(self):\n    self.write('no_header', 'string')\n", 
+            "goal_time": 2.0, 
+            "name": "asciibench.ASCIISuite.time_noheader_write_string", 
+            "number": 0, 
+            "repeat": 3, 
+            "timeout": 60.0, 
+            "type": "time", 
+            "unit": "seconds"
+        }, 
+        "asciibench.ASCIISuite.time_rdb_read_float": {
+            "code": "def time_rdb_read_float(self):\n    self.read('rdb', 'float')\n", 
+            "goal_time": 2.0, 
+            "name": "asciibench.ASCIISuite.time_rdb_read_float", 
+            "number": 0, 
+            "repeat": 3, 
+            "timeout": 60.0, 
+            "type": "time", 
+            "unit": "seconds"
+        }, 
+        "asciibench.ASCIISuite.time_rdb_read_int": {
+            "code": "def time_rdb_read_int(self):\n    self.read('rdb', 'int')\n", 
+            "goal_time": 2.0, 
+            "name": "asciibench.ASCIISuite.time_rdb_read_int", 
+            "number": 0, 
+            "repeat": 3, 
+            "timeout": 60.0, 
+            "type": "time", 
+            "unit": "seconds"
+        }, 
+        "asciibench.ASCIISuite.time_rdb_read_string": {
+            "code": "def time_rdb_read_string(self):\n    self.read('rdb', 'string')\n", 
+            "goal_time": 2.0, 
+            "name": "asciibench.ASCIISuite.time_rdb_read_string", 
+            "number": 0, 
+            "repeat": 3, 
+            "timeout": 60.0, 
+            "type": "time", 
+            "unit": "seconds"
+        }, 
+        "asciibench.ASCIISuite.time_rdb_write_float": {
+            "code": "def time_rdb_write_float(self):\n    self.write('rdb', 'float')\n", 
+            "goal_time": 2.0, 
+            "name": "asciibench.ASCIISuite.time_rdb_write_float", 
+            "number": 0, 
+            "repeat": 3, 
+            "timeout": 60.0, 
+            "type": "time", 
+            "unit": "seconds"
+        }, 
+        "asciibench.ASCIISuite.time_rdb_write_int": {
+            "code": "def time_rdb_write_int(self):\n    self.write('rdb', 'int')\n", 
+            "goal_time": 2.0, 
+            "name": "asciibench.ASCIISuite.time_rdb_write_int", 
+            "number": 0, 
+            "repeat": 3, 
+            "timeout": 60.0, 
+            "type": "time", 
+            "unit": "seconds"
+        }, 
+        "asciibench.ASCIISuite.time_rdb_write_string": {
+            "code": "def time_rdb_write_string(self):\n    self.write('rdb', 'string')\n", 
+            "goal_time": 2.0, 
+            "name": "asciibench.ASCIISuite.time_rdb_write_string", 
+            "number": 0, 
+            "repeat": 3, 
+            "timeout": 60.0, 
+            "type": "time", 
+            "unit": "seconds"
+        }, 
+        "asciibench.ASCIISuite.time_sextractor_read_float": {
+            "code": "def time_sextractor_read_float(self):\n    self.read('sextractor', 'float')\n", 
+            "goal_time": 2.0, 
+            "name": "asciibench.ASCIISuite.time_sextractor_read_float", 
+            "number": 0, 
+            "repeat": 3, 
+            "timeout": 60.0, 
+            "type": "time", 
+            "unit": "seconds"
+        }, 
+        "asciibench.ASCIISuite.time_sextractor_read_int": {
+            "code": "def time_sextractor_read_int(self):\n    self.read('sextractor', 'int')\n", 
+            "goal_time": 2.0, 
+            "name": "asciibench.ASCIISuite.time_sextractor_read_int", 
+            "number": 0, 
+            "repeat": 3, 
+            "timeout": 60.0, 
+            "type": "time", 
+            "unit": "seconds"
+        }, 
+        "asciibench.ASCIISuite.time_sextractor_read_string": {
+            "code": "def time_sextractor_read_string(self):\n    self.read('sextractor', 'string')\n", 
+            "goal_time": 2.0, 
+            "name": "asciibench.ASCIISuite.time_sextractor_read_string", 
+            "number": 0, 
+            "repeat": 3, 
+            "timeout": 60.0, 
+            "type": "time", 
+            "unit": "seconds"
+        }, 
+        "asciibench.ASCIISuite.time_tab_read_float": {
+            "code": "def time_tab_read_float(self):\n    self.read('tab', 'float')\n", 
+            "goal_time": 2.0, 
+            "name": "asciibench.ASCIISuite.time_tab_read_float", 
+            "number": 0, 
+            "repeat": 3, 
+            "timeout": 60.0, 
+            "type": "time", 
+            "unit": "seconds"
+        }, 
+        "asciibench.ASCIISuite.time_tab_read_int": {
+            "code": "def time_tab_read_int(self):\n    self.read('tab', 'int')\n", 
+            "goal_time": 2.0, 
+            "name": "asciibench.ASCIISuite.time_tab_read_int", 
+            "number": 0, 
+            "repeat": 3, 
+            "timeout": 60.0, 
+            "type": "time", 
+            "unit": "seconds"
+        }, 
+        "asciibench.ASCIISuite.time_tab_read_string": {
+            "code": "def time_tab_read_string(self):\n    self.read('tab', 'string')\n", 
+            "goal_time": 2.0, 
+            "name": "asciibench.ASCIISuite.time_tab_read_string", 
+            "number": 0, 
+            "repeat": 3, 
+            "timeout": 60.0, 
+            "type": "time", 
+            "unit": "seconds"
+        }, 
+        "asciibench.ASCIISuite.time_tab_write_float": {
+            "code": "def time_tab_write_float(self):\n    self.write('tab', 'float')\n", 
+            "goal_time": 2.0, 
+            "name": "asciibench.ASCIISuite.time_tab_write_float", 
+            "number": 0, 
+            "repeat": 3, 
+            "timeout": 60.0, 
+            "type": "time", 
+            "unit": "seconds"
+        }, 
+        "asciibench.ASCIISuite.time_tab_write_int": {
+            "code": "def time_tab_write_int(self):\n    self.write('tab', 'int')\n", 
+            "goal_time": 2.0, 
+            "name": "asciibench.ASCIISuite.time_tab_write_int", 
+            "number": 0, 
+            "repeat": 3, 
+            "timeout": 60.0, 
+            "type": "time", 
+            "unit": "seconds"
+        }, 
+        "asciibench.ASCIISuite.time_tab_write_string": {
+            "code": "def time_tab_write_string(self):\n    self.write('tab', 'string')\n", 
+            "goal_time": 2.0, 
+            "name": "asciibench.ASCIISuite.time_tab_write_string", 
+            "number": 0, 
+            "repeat": 3, 
+            "timeout": 60.0, 
+            "type": "time", 
+            "unit": "seconds"
+        }, 
         "fixedwidthbench.FixedWidthSuite.time_header": {
             "code": "def time_header(self):\n    self.header.get_cols(self.lines)\n", 
             "goal_time": 2.0, 
             "name": "fixedwidthbench.FixedWidthSuite.time_header", 
+            "number": 0, 
+            "repeat": 3, 
+            "timeout": 60.0, 
+            "type": "time", 
+            "unit": "seconds"
+        }, 
+        "fixedwidthbench.FixedWidthSuite.time_splitter": {
+            "code": "def time_splitter(self):\n    self.splitter(self.lines[1:])\n", 
+            "goal_time": 2.0, 
+            "name": "fixedwidthbench.FixedWidthSuite.time_splitter", 
+            "number": 0, 
+            "repeat": 3, 
+            "timeout": 60.0, 
+            "type": "time", 
+            "unit": "seconds"
+        }, 
+        "ipacbench.IPACSuite.time_data_str_vals": {
+            "code": "def time_data_str_vals(self):\n    data = IpacData()\n    data.cols = list(six.itervalues(self.table.columns))\n    data.str_vals()\n", 
+            "goal_time": 2.0, 
+            "name": "ipacbench.IPACSuite.time_data_str_vals", 
+            "number": 0, 
+            "repeat": 3, 
+            "timeout": 60.0, 
+            "type": "time", 
+            "unit": "seconds"
+        }, 
+        "ipacbench.IPACSuite.time_get_cols": {
+            "code": "def time_get_cols(self):\n    self.header.get_cols(self.lines)\n", 
+            "goal_time": 2.0, 
+            "name": "ipacbench.IPACSuite.time_get_cols", 
+            "number": 0, 
+            "repeat": 3, 
+            "timeout": 60.0, 
+            "type": "time", 
+            "unit": "seconds"
+        }, 
+        "ipacbench.IPACSuite.time_header_str_vals": {
+            "code": "def time_header_str_vals(self):\n    header = IpacHeader()\n    header.cols = list(six.itervalues(self.table.columns))\n    header.DBMS = False\n    header.str_vals()\n", 
+            "goal_time": 2.0, 
+            "name": "ipacbench.IPACSuite.time_header_str_vals", 
+            "number": 0, 
+            "repeat": 3, 
+            "timeout": 60.0, 
+            "type": "time", 
+            "unit": "seconds"
+        }, 
+        "ipacbench.IPACSuite.time_splitter": {
+            "code": "def time_splitter(self):\n    self.splitter.join(self.vals, self.widths)\n", 
+            "goal_time": 2.0, 
+            "name": "ipacbench.IPACSuite.time_splitter", 
+            "number": 0, 
+            "repeat": 3, 
+            "timeout": 60.0, 
+            "type": "time", 
+            "unit": "seconds"
+        }, 
+        "rdbbench.RDBSuite.time_get_cols": {
+            "code": "def time_get_cols(self):\n    self.header.get_cols(self.lines)\n", 
+            "goal_time": 2.0, 
+            "name": "rdbbench.RDBSuite.time_get_cols", 
             "number": 0, 
             "repeat": 3, 
             "timeout": 60.0, 
@@ -19,9 +709,46 @@
             "timeout": 60.0, 
             "type": "time", 
             "unit": "seconds"
+        }, 
+        "tablebench.TableSuite.time_str_vals_float": {
+            "code": "def time_str_vals_float(self):\n    self.cols[1].iter_str_vals()\n", 
+            "goal_time": 2.0, 
+            "name": "tablebench.TableSuite.time_str_vals_float", 
+            "number": 0, 
+            "repeat": 3, 
+            "timeout": 60.0, 
+            "type": "time", 
+            "unit": "seconds"
+        }, 
+        "tablebench.TableSuite.time_str_vals_int": {
+            "code": "def time_str_vals_int(self):\n    self.cols[0].iter_str_vals()\n", 
+            "goal_time": 2.0, 
+            "name": "tablebench.TableSuite.time_str_vals_int", 
+            "number": 0, 
+            "repeat": 3, 
+            "timeout": 60.0, 
+            "type": "time", 
+            "unit": "seconds"
+        }, 
+        "tablebench.TableSuite.time_str_vals_str": {
+            "code": "def time_str_vals_str(self):\n    self.cols[2].iter_str_vals()\n", 
+            "goal_time": 2.0, 
+            "name": "tablebench.TableSuite.time_str_vals_str", 
+            "number": 0, 
+            "repeat": 3, 
+            "timeout": 60.0, 
+            "type": "time", 
+            "unit": "seconds"
         }
     }, 
     "date_to_hash": {
+        "1390495531000": "57cebe1c", 
+        "1392917769000": "28b930a0", 
+        "1396412440000": "1c4c0969", 
+        "1399587982000": "c6889b11", 
+        "1401088233000": "a96a37b1", 
+        "1401119451000": "241b8bf5", 
+        "1401220707000": "b85bb656", 
         "1401807669000": "d25c4872"
     }, 
     "machines": {
@@ -58,6 +785,9 @@
         ], 
         "ram": [
             "8GB"
+        ], 
+        "six": [
+            null
         ]
     }, 
     "project": "astropy", 
