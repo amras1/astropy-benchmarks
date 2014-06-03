@@ -12,7 +12,8 @@ class ASCIISuite:
             'tab': ascii.Tab,
             'no_header': ascii.NoHeader,
             'commented_header': ascii.CommentedHeader,
-            'basic': ascii.Basic
+            'basic': ascii.Basic,
+            'ipac': ascii.Ipac
             }
         for file_format in self.writers:
             for data_type in ('string', 'int', 'float'):
@@ -117,6 +118,15 @@ class ASCIISuite:
     def time_sextractor_read_float(self):
         self.read('sextractor', 'float')
 
+    def time_ipac_read_string(self):
+        self.read('ipac', 'string')
+
+    def time_ipac_read_int(self):
+        self.read('ipac', 'int')
+
+    def time_ipac_read_float(self):
+        self.read('ipac', 'float')
+
     def time_csv_write_string(self):
         self.write('csv', 'string')
 
@@ -197,3 +207,12 @@ class ASCIISuite:
 
     def time_basic_write_float(self):
         self.write('basic', 'float')
+
+    def time_ipac_write_string(self):
+        self.write('ipac', 'string')
+
+    def time_ipac_write_int(self):
+        self.write('ipac', 'int')
+
+    def time_ipac_write_float(self):
+        self.write('ipac', 'float')

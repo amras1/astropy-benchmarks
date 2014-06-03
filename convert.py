@@ -9,7 +9,8 @@ writer_dict = {
     'no_header': ascii.NoHeader,
     'rdb': ascii.Rdb,
     'tab': ascii.Tab,
-    'basic': ascii.Basic
+    'basic': ascii.Basic,
+    'ipac': ascii.Ipac
 }
 
 for ftype in writer_dict:
