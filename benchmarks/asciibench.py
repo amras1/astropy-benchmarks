@@ -1,8 +1,11 @@
 from astropy.io import ascii
+from cStringIO import StringIO
 
 class ASCIISuite:
     def setup(self):
         self.tables = {}
+        self.data = {}
+        self.output = StringIO()
         self.writers = {
             'csv': ascii.Csv,
             'rdb': ascii.Rdb,
@@ -17,15 +20,19 @@ class ASCIISuite:
             }
         for file_format in self.writers:
             for data_type in ('string', 'int', 'float'):
+                f = open('benchmarks/files/{}/{}.txt'.format(file_format,
+                                                             data_type))
+                self.data[(file_format, data_type)] = f.read()
+                f.close()
                 self.tables[(file_format, data_type)] = self.read(
                     file_format, data_type)
                 
     def read(self, file_format, data_type):
-        return ascii.read('benchmarks/files/{}/{}.txt'.format(file_format,
-                        data_type), format=file_format)
+        return ascii.read(StringIO(self.data[(file_format, data_type)]),
+                          format=file_format)
 
     def write(self, file_format, data_type):
-        ascii.write(self.tables[(file_format, data_type)], 'output.txt',
+        ascii.write(self.tables[(file_format, data_type)], self.output,
                     Writer=self.writers[file_format])
 
     def time_csv_read_string(self):
