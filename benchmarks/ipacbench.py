@@ -10,10 +10,10 @@ class IPACSuite:
         self.splitter = IpacHeaderSplitter()
         self.vals = [str(i + 1) for i in range(1000)]
         self.widths = [i + 1 for i in range(1000)]
-        f = open('files/ipac/string.txt')
+        f = open('benchmarks/files/ipac/string.txt')
         self.lines = f.read().split('\n')
         f.close()
-        self.table = ascii.read('files/ipac/string.txt', format='ipac')
+        self.table = ascii.read('benchmarks/files/ipac/string.txt', format='ipac')
         
     def time_splitter(self):
         self.splitter.join(self.vals, self.widths)

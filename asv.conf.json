@@ -8,7 +8,9 @@
     // version.
     "matrix": {
         "numpy": ["1.8"],
-        "Cython": []
+        "Cython": [],
+        "six": [],
+        "pandas": []
     },
 
     // The git URL to the project being tested
