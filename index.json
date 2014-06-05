@@ -630,6 +630,226 @@
             "type": "time", 
             "unit": "seconds"
         }, 
+        "comparisonbench.ComparisonSuite.time_astropy_float": {
+            "code": "def time_astropy_float(self):\n    ascii.read(StringIO(self.data['float']), format='basic')\n", 
+            "goal_time": 2.0, 
+            "name": "comparisonbench.ComparisonSuite.time_astropy_float", 
+            "number": 0, 
+            "repeat": 3, 
+            "timeout": 60.0, 
+            "type": "time", 
+            "unit": "seconds"
+        }, 
+        "comparisonbench.ComparisonSuite.time_astropy_int": {
+            "code": "def time_astropy_int(self):\n    ascii.read(StringIO(self.data['int']), format='basic')\n", 
+            "goal_time": 2.0, 
+            "name": "comparisonbench.ComparisonSuite.time_astropy_int", 
+            "number": 0, 
+            "repeat": 3, 
+            "timeout": 60.0, 
+            "type": "time", 
+            "unit": "seconds"
+        }, 
+        "comparisonbench.ComparisonSuite.time_astropy_mixture": {
+            "code": "def time_astropy_mixture(self):\n    ascii.read(StringIO(self.data['mixture']), format='basic')\n", 
+            "goal_time": 2.0, 
+            "name": "comparisonbench.ComparisonSuite.time_astropy_mixture", 
+            "number": 0, 
+            "repeat": 3, 
+            "timeout": 60.0, 
+            "type": "time", 
+            "unit": "seconds"
+        }, 
+        "comparisonbench.ComparisonSuite.time_astropy_string": {
+            "code": "def time_astropy_string(self):\n    ascii.read(StringIO(self.data['string']), format='basic')\n", 
+            "goal_time": 2.0, 
+            "name": "comparisonbench.ComparisonSuite.time_astropy_string", 
+            "number": 0, 
+            "repeat": 3, 
+            "timeout": 60.0, 
+            "type": "time", 
+            "unit": "seconds"
+        }, 
+        "comparisonbench.ComparisonSuite.time_numpy_genfromtxt_float": {
+            "code": "def time_numpy_genfromtxt_float(self):\n    np.genfromtxt(StringIO(self.data['float']), delimiter=' ')\n", 
+            "goal_time": 2.0, 
+            "name": "comparisonbench.ComparisonSuite.time_numpy_genfromtxt_float", 
+            "number": 0, 
+            "repeat": 3, 
+            "timeout": 60.0, 
+            "type": "time", 
+            "unit": "seconds"
+        }, 
+        "comparisonbench.ComparisonSuite.time_numpy_genfromtxt_int": {
+            "code": "def time_numpy_genfromtxt_int(self):\n    np.genfromtxt(StringIO(self.data['int']), delimiter=' ',\n                  dtype='i4')\n", 
+            "goal_time": 2.0, 
+            "name": "comparisonbench.ComparisonSuite.time_numpy_genfromtxt_int", 
+            "number": 0, 
+            "repeat": 3, 
+            "timeout": 60.0, 
+            "type": "time", 
+            "unit": "seconds"
+        }, 
+        "comparisonbench.ComparisonSuite.time_numpy_genfromtxt_mixture": {
+            "code": "def time_numpy_genfromtxt_mixture(self):\n    # Test out genfromtxt's autoconversion\n    np.genfromtxt(StringIO(self.data['mixture']), delimiter=' ',\n                  dtype=None)\n", 
+            "goal_time": 2.0, 
+            "name": "comparisonbench.ComparisonSuite.time_numpy_genfromtxt_mixture", 
+            "number": 0, 
+            "repeat": 3, 
+            "timeout": 60.0, 
+            "type": "time", 
+            "unit": "seconds"
+        }, 
+        "comparisonbench.ComparisonSuite.time_numpy_genfromtxt_string": {
+            "code": "def time_numpy_genfromtxt_string(self):\n    np.genfromtxt(StringIO(self.data['string']), delimiter=' ',\n                  dtype='S10')\n", 
+            "goal_time": 2.0, 
+            "name": "comparisonbench.ComparisonSuite.time_numpy_genfromtxt_string", 
+            "number": 0, 
+            "repeat": 3, 
+            "timeout": 60.0, 
+            "type": "time", 
+            "unit": "seconds"
+        }, 
+        "comparisonbench.ComparisonSuite.time_numpy_loadtxt_float": {
+            "code": "def time_numpy_loadtxt_float(self):\n    np.loadtxt(StringIO(self.data['float']), delimiter=' ')\n", 
+            "goal_time": 2.0, 
+            "name": "comparisonbench.ComparisonSuite.time_numpy_loadtxt_float", 
+            "number": 0, 
+            "repeat": 3, 
+            "timeout": 60.0, 
+            "type": "time", 
+            "unit": "seconds"
+        }, 
+        "comparisonbench.ComparisonSuite.time_numpy_loadtxt_int": {
+            "code": "def time_numpy_loadtxt_int(self):\n    np.loadtxt(StringIO(self.data['int']), delimiter=' ',\n               dtype='i4')\n", 
+            "goal_time": 2.0, 
+            "name": "comparisonbench.ComparisonSuite.time_numpy_loadtxt_int", 
+            "number": 0, 
+            "repeat": 3, 
+            "timeout": 60.0, 
+            "type": "time", 
+            "unit": "seconds"
+        }, 
+        "comparisonbench.ComparisonSuite.time_numpy_loadtxt_mixture": {
+            "code": "def time_numpy_loadtxt_mixture(self):\n    np.loadtxt(StringIO(self.data['mixture']), delimiter=' ',\n               dtype=self.mix_dtype)\n", 
+            "goal_time": 2.0, 
+            "name": "comparisonbench.ComparisonSuite.time_numpy_loadtxt_mixture", 
+            "number": 0, 
+            "repeat": 3, 
+            "timeout": 60.0, 
+            "type": "time", 
+            "unit": "seconds"
+        }, 
+        "comparisonbench.ComparisonSuite.time_numpy_loadtxt_string": {
+            "code": "def time_numpy_loadtxt_string(self):\n    np.loadtxt(StringIO(self.data['string']), delimiter=' ',\n               dtype='S10')\n", 
+            "goal_time": 2.0, 
+            "name": "comparisonbench.ComparisonSuite.time_numpy_loadtxt_string", 
+            "number": 0, 
+            "repeat": 3, 
+            "timeout": 60.0, 
+            "type": "time", 
+            "unit": "seconds"
+        }, 
+        "comparisonbench.ComparisonSuite.time_pandas_read_csv_float": {
+            "code": "def time_pandas_read_csv_float(self):\n    pandas.read_csv(StringIO(self.data['float']), sep=' ')\n", 
+            "goal_time": 2.0, 
+            "name": "comparisonbench.ComparisonSuite.time_pandas_read_csv_float", 
+            "number": 0, 
+            "repeat": 3, 
+            "timeout": 60.0, 
+            "type": "time", 
+            "unit": "seconds"
+        }, 
+        "comparisonbench.ComparisonSuite.time_pandas_read_csv_int": {
+            "code": "def time_pandas_read_csv_int(self):\n    pandas.read_csv(StringIO(self.data['int']), sep=' ')\n", 
+            "goal_time": 2.0, 
+            "name": "comparisonbench.ComparisonSuite.time_pandas_read_csv_int", 
+            "number": 0, 
+            "repeat": 3, 
+            "timeout": 60.0, 
+            "type": "time", 
+            "unit": "seconds"
+        }, 
+        "comparisonbench.ComparisonSuite.time_pandas_read_csv_mixture": {
+            "code": "def time_pandas_read_csv_mixture(self):\n    pandas.read_csv(StringIO(self.data['mixture']), sep=' ')\n", 
+            "goal_time": 2.0, 
+            "name": "comparisonbench.ComparisonSuite.time_pandas_read_csv_mixture", 
+            "number": 0, 
+            "repeat": 3, 
+            "timeout": 60.0, 
+            "type": "time", 
+            "unit": "seconds"
+        }, 
+        "comparisonbench.ComparisonSuite.time_pandas_read_csv_string": {
+            "code": "def time_pandas_read_csv_string(self):\n    pandas.read_csv(StringIO(self.data['string']), sep=' ')\n", 
+            "goal_time": 2.0, 
+            "name": "comparisonbench.ComparisonSuite.time_pandas_read_csv_string", 
+            "number": 0, 
+            "repeat": 3, 
+            "timeout": 60.0, 
+            "type": "time", 
+            "unit": "seconds"
+        }, 
+        "comparisonbench.ComparisonSuite.time_pandas_read_table_float": {
+            "code": "def time_pandas_read_table_float(self):\n    pandas.read_table(StringIO(self.data['float']), sep=' ')\n", 
+            "goal_time": 2.0, 
+            "name": "comparisonbench.ComparisonSuite.time_pandas_read_table_float", 
+            "number": 0, 
+            "repeat": 3, 
+            "timeout": 60.0, 
+            "type": "time", 
+            "unit": "seconds"
+        }, 
+        "comparisonbench.ComparisonSuite.time_pandas_read_table_int": {
+            "code": "def time_pandas_read_table_int(self):\n    pandas.read_table(StringIO(self.data['int']), sep=' ')\n", 
+            "goal_time": 2.0, 
+            "name": "comparisonbench.ComparisonSuite.time_pandas_read_table_int", 
+            "number": 0, 
+            "repeat": 3, 
+            "timeout": 60.0, 
+            "type": "time", 
+            "unit": "seconds"
+        }, 
+        "comparisonbench.ComparisonSuite.time_pandas_read_table_mixture": {
+            "code": "def time_pandas_read_table_mixture(self):\n    pandas.read_table(StringIO(self.data['mixture']), sep=' ')\n", 
+            "goal_time": 2.0, 
+            "name": "comparisonbench.ComparisonSuite.time_pandas_read_table_mixture", 
+            "number": 0, 
+            "repeat": 3, 
+            "timeout": 60.0, 
+            "type": "time", 
+            "unit": "seconds"
+        }, 
+        "comparisonbench.ComparisonSuite.time_pandas_read_table_string": {
+            "code": "def time_pandas_read_table_string(self):\n    pandas.read_table(StringIO(self.data['string']), sep=' ')\n", 
+            "goal_time": 2.0, 
+            "name": "comparisonbench.ComparisonSuite.time_pandas_read_table_string", 
+            "number": 0, 
+            "repeat": 3, 
+            "timeout": 60.0, 
+            "type": "time", 
+            "unit": "seconds"
+        }, 
+        "corebench.CoreSuite.time_continuation_inputter": {
+            "code": "def time_continuation_inputter(self):\n    core.ContinuationLinesInputter().process_lines(self.lines)\n", 
+            "goal_time": 2.0, 
+            "name": "corebench.CoreSuite.time_continuation_inputter", 
+            "number": 0, 
+            "repeat": 3, 
+            "timeout": 60.0, 
+            "type": "time", 
+            "unit": "seconds"
+        }, 
+        "corebench.CoreSuite.time_whitespace_splitter": {
+            "code": "def time_whitespace_splitter(self):\n    core.WhitespaceSplitter().process_line(self.line)\n", 
+            "goal_time": 2.0, 
+            "name": "corebench.CoreSuite.time_whitespace_splitter", 
+            "number": 0, 
+            "repeat": 3, 
+            "timeout": 60.0, 
+            "type": "time", 
+            "unit": "seconds"
+        }, 
         "fixedwidthbench.FixedWidthSuite.time_header": {
             "code": "def time_header(self):\n    self.header.get_cols(self.lines)\n", 
             "goal_time": 2.0, 
@@ -742,14 +962,7 @@
         }
     }, 
     "date_to_hash": {
-        "1390495531000": "57cebe1c", 
-        "1392917769000": "28b930a0", 
-        "1396412440000": "1c4c0969", 
-        "1399587982000": "c6889b11", 
-        "1401088233000": "a96a37b1", 
-        "1401119451000": "241b8bf5", 
-        "1401220707000": "b85bb656", 
-        "1401807669000": "d25c4872"
+        "1401933121000": "e874ae17"
     }, 
     "machines": {
         "michael-Gazelle-Professional": {
@@ -779,6 +992,9 @@
         ], 
         "os": [
             "Linux 3.13.0-24-generic"
+        ], 
+        "pandas": [
+            null
         ], 
         "python": [
             "2.7"
