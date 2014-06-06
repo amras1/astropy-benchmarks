@@ -18,14 +18,15 @@ class ASCIISuite:
             'basic': ascii.Basic,
             'ipac': ascii.Ipac
             }
-        for file_format in self.writers:
+        for file_format in self.writers.keys() + ['sextractor']:
             for data_type in ('string', 'int', 'float'):
                 f = open('benchmarks/files/{}/{}.txt'.format(file_format,
                                                              data_type))
                 self.data[(file_format, data_type)] = f.read()
                 f.close()
-                self.tables[(file_format, data_type)] = self.read(
-                    file_format, data_type)
+                if file_format != 'sextractor':
+                    self.tables[(file_format, data_type)] = self.read(
+                                                file_format, data_type)
                 
     def read(self, file_format, data_type):
         return ascii.read(StringIO(self.data[(file_format, data_type)]),
