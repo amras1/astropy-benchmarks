@@ -88,3 +88,25 @@ Specific benchmarks
 * `time_header`: 2.19 ms
 
 These turned out to be fairly negligible in terms of time, with the exception of `time_data_str_vals` -- perhaps that can be rewritten more efficiently.
+
+Profiling
+=========
+
+I ran cProfile for a quick high-level overview with the following code:
+```
+import cProfile
+from astropy.io import ascii
+cProfile.run('t = ascii.read("benchmarks/files/comparison/float.txt", format="basic")',
+             'readstats')
+cProfile.run('ascii.write(t, "out.txt", Writer=ascii.Basic)', 'writestats')
+```
+
+I then used [SnakeViz](http://jiffyclub.github.io/snakeviz/), a profiling visualization tool, to interpret the results and get a sense for which routines are performance benchmarks.
+
+Reading
+-------
+[Here](http://i.imgur.com/DRuB3SR.png) is a screenshot of SnakeViz's output using the results of profiling `ascii.read()` with cProfile. The inner tan-colored ring is the method `read()` in `BaseReader()`, which takes up virtually of the time discounting the negligible overhead of higher-level functions `ascii.read()` and `_guess()`. `read()` calls a number of functions, but the most significant in terms of time are `DefaultSplitter.__call__()` (dark blue, taking up a cumulative 40% of the total time), `TableOutputter.__call__()` (light blue, taking up a cumulative 20% of the total time), and `read()` itself (taking up 19% of the total time). Futhermore, `DefaultSplitter.__call__()` is broken up into `BaseSplitter.process_val()` (39%), internal processing (56%), and the fairly negligible `DefaultSplitter.process_line()`. `BaseData.masks()` and `BaseData.get_data_lines()` are next in terms of time consumption, although they both take up less than 8% of the total time in `read()`.
+
+Writing
+-------
+[Here](http://i.imgur.com/HCfw5lJ.png) is a similar screenshot of SnakeViz's output for `ascii.write()`. The innermost circle is `BaseReader.write()` and the enclosing ring is `BaseData.write()`, which takes up virtually all of the writing time. This is split into `BaseColumn.iter_str_vals()` (light blue on the right, taking up 62%) and `DefaultSplitter.join()` (blue-green on the left, taking up 28%), followed by `BaseData._replace_vals()` and `BaseData.write()` itself. `BaseColumn.iter_str_vals()` ultimately boils down to a lambda function repeatedly called in `TableFormatter._pformat_col_iter()` as well as some time spent in `_pformat_col_iter()` itself, while `DefaultSplitter.join()` is split into `BaseSplitter.process_val()`, the `writerow()` method in `csv.writer`, and its own processing.
