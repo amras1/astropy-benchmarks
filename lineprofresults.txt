@@ -1,0 +1,412 @@
+Wrote profile results to ioprofile.py.lprof
+Timer unit: 1e-06 s
+
+File: /home/michael/git/astropy/astropy/io/ascii/core.py
+Function: process_val at line 201
+Total time: 0.513197 s
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+   201                                               @profile
+   202                                               def process_val(self, val):
+   203                                                   """Remove whitespace at the beginning or end of value."""
+   204   1800018       513197      0.3    100.0          return val.strip()
+
+File: /home/michael/git/astropy/astropy/io/ascii/core.py
+Function: __call__ at line 262
+Total time: 2.34409 s
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+   262                                               @profile
+   263                                               def __call__(self, lines):
+   264                                                   """Return an iterator over the table ``lines``, where each iterator output
+   265                                                   is a list of the split line values.
+   266                                           
+   267                                                   :param lines: list of table lines
+   268                                                   :returns: iterator
+   269                                                   """
+   270         2            2      1.0      0.0          if self.process_line:
+   271    100003        89330      0.9      3.8              lines = [self.process_line(x) for x in lines]
+   272                                           
+   273                                                   # In Python 2.x the inputs to csv cannot be unicode.  In Python 3 these
+   274                                                   # lines do nothing.
+   275         2            2      1.0      0.0          escapechar = None if self.escapechar is None else str(self.escapechar)
+   276         2            5      2.5      0.0          quotechar = None if self.quotechar is None else str(self.quotechar)
+   277         2            2      1.0      0.0          delimiter = None if self.delimiter is None else str(self.delimiter)
+   278                                           
+   279         2            1      0.5      0.0          if delimiter == '\s':
+   280                                                       delimiter = ' '
+   281                                           
+   282         2            4      2.0      0.0          csv_reader = csv.reader(lines,
+   283         2            2      1.0      0.0                                  delimiter=delimiter,
+   284         2            2      1.0      0.0                                  doublequote=self.doublequote,
+   285         2            2      1.0      0.0                                  escapechar=escapechar,
+   286         2            6      3.0      0.0                                  quotechar=quotechar,
+   287         2            1      0.5      0.0                                  quoting=self.quoting,
+   288         2           20     10.0      0.0                                  skipinitialspace=self.skipinitialspace
+   289                                                                           )
+   290    100002       128874      1.3      5.5          for vals in csv_reader:
+   291    100001        52436      0.5      2.2              if self.process_val:
+   292   1000010      2073399      2.1     88.5                  yield [self.process_val(x) for x in vals]
+   293                                                       else:
+   294                                                           yield vals
+
+File: /home/michael/git/astropy/astropy/io/ascii/core.py
+Function: join at line 295
+Total time: 2.89614 s
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+   295                                               @profile
+   296                                               def join(self, vals):
+   297                                           
+   298                                                   # In Python 2.x the inputs to csv cannot be unicode
+   299    100001        51681      0.5      1.8          escapechar = None if self.escapechar is None else str(self.escapechar)
+   300    100001        62294      0.6      2.2          quotechar = None if self.quotechar is None else str(self.quotechar)
+   301    100001        62738      0.6      2.2          delimiter = ' ' if self.delimiter is None else str(self.delimiter)
+   302                                           
+   303    100001        48638      0.5      1.7          if self.csv_writer is None:
+   304         2            5      2.5      0.0              self.csv_writer = csv.writer(self.csv_writer_out,
+   305         2            0      0.0      0.0                                           delimiter=delimiter,
+   306         2            2      1.0      0.0                                           doublequote=self.doublequote,
+   307         2            1      0.5      0.0                                           escapechar=escapechar,
+   308         2            1      0.5      0.0                                           quotechar=quotechar,
+   309         2            1      0.5      0.0                                           quoting=self.quoting,
+   310         2           18      9.0      0.0                                           lineterminator='',
+   311                                                                                    )
+   312    100001        58708      0.6      2.0          self.csv_writer_out.seek(0)
+   313    100001        57466      0.6      2.0          self.csv_writer_out.truncate()
+   314    100001        51557      0.5      1.8          if self.process_val:
+   315   1000010      2179053      2.2     75.2              vals = [self.process_val(x) for x in vals]
+   316    100001       267287      2.7      9.2          self.csv_writer.writerow(vals)
+   317                                           
+   318    100001        56686      0.6      2.0          return self.csv_writer_out.getvalue()
+
+File: /home/michael/git/astropy/astropy/io/ascii/core.py
+Function: get_data_lines at line 487
+Total time: 0.064543 s
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+   487                                               @profile
+   488                                               def get_data_lines(self, lines):
+   489                                                   """Set the ``data_lines`` attribute to the lines slice comprising the
+   490                                                   table data values."""
+   491         1        63174  63174.0     97.9          data_lines = self.process_lines(lines)
+   492         1           11     11.0      0.0          start_line = _get_line_index(self.start_line, data_lines)
+   493         1            2      2.0      0.0          end_line = _get_line_index(self.end_line, data_lines)
+   494                                           
+   495         1            0      0.0      0.0          if start_line is not None or end_line is not None:
+   496         1         1356   1356.0      2.1              self.data_lines = data_lines[slice(start_line, end_line)]
+   497                                                   else:  # Don't copy entire data lines unless necessary
+   498                                                       self.data_lines = data_lines
+
+File: /home/michael/git/astropy/astropy/io/ascii/core.py
+Function: masks at line 505
+Total time: 0.266354 s
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+   505                                               @profile
+   506                                               def masks(self, cols):
+   507                                                   """Set fill value for each column and then apply that fill value
+   508                                           
+   509                                                   In the first step it is evaluated with value from ``fill_values`` applies to
+   510                                                   which column using ``fill_include_names`` and ``fill_exclude_names``.
+   511                                                   In the second step all replacements are done for the appropriate columns.
+   512                                                   """
+   513         1            1      1.0      0.0          if self.fill_values:
+   514         1           90     90.0      0.0              self._set_fill_values(cols)
+   515         1       266263 266263.0    100.0              self._set_masks(cols)
+
+File: /home/michael/git/astropy/astropy/io/ascii/core.py
+Function: _replace_vals at line 570
+Total time: 0.287666 s
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+   570                                               @profile
+   571                                               def _replace_vals(self, cols):
+   572                                                   """Replace string values in col.str_vals"""
+   573         1            1      1.0      0.0          if self.fill_values:
+   574        10           27      2.7      0.0              for col in (col for col in cols if col.fill_values):
+   575         9       287540  31948.9    100.0                  for i, str_val in ((i, x) for i, x in enumerate(col.str_vals)
+   576                                                                              if x in col.fill_values):
+   577                                                               col.str_vals[i] = col.fill_values[str_val]
+   578         9           98     10.9      0.0                  if masked in col.fill_values and hasattr(col, 'mask'):
+   579                                                               mask_val = col.fill_values[masked]
+   580                                                               for i in col.mask.nonzero()[0]:
+   581                                                                   col.str_vals[i] = mask_val
+
+File: /home/michael/git/astropy/astropy/io/ascii/core.py
+Function: write at line 583
+Total time: 19.9998 s
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+   583                                               @profile
+   584                                               def write(self, lines):
+   585         1            1      1.0      0.0          if hasattr(self.start_line, '__call__'):
+   586                                                       raise TypeError('Start_line attribute cannot be callable for write()')
+   587                                                   else:
+   588         1            0      0.0      0.0              data_start_line = self.start_line or 0
+   589                                           
+   590         1            1      1.0      0.0          while len(lines) < data_start_line:
+   591                                                       lines.append(itertools.cycle(self.write_spacer_lines))
+   592                                           
+   593         1           73     73.0      0.0          self._set_fill_values(self.cols)
+   594         1            8      8.0      0.0          self._set_col_formats()
+   595        10           10      1.0      0.0          for col in self.cols:
+   596         9     15402525 1711391.7     77.0              col.str_vals = list(col.iter_str_vals())
+   597         1       287718 287718.0      1.4          self._replace_vals(self.cols)
+   598        10           11      1.1      0.0          col_str_iters = [col.str_vals for col in self.cols]
+   599    100001        62421      0.6      0.3          for vals in zip(*col_str_iters):
+   600    100000      4247023     42.5     21.2              lines.append(self.splitter.join(vals))
+
+File: /home/michael/git/astropy/astropy/io/ascii/core.py
+Function: __call__ at line 696
+Total time: 0.211324 s
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+   696                                               @profile
+   697                                               def __call__(self, cols, meta):
+   698         1       201520 201520.0     95.4          self._convert_vals(cols)
+   699                                           
+   700                                                   # If there are any values that were filled and tagged with a mask bit then this
+   701                                                   # will be a masked table.  Otherwise use a plain table.
+   702         1          194    194.0      0.1          masked = any(hasattr(col, 'mask') and numpy.any(col.mask) for col in cols)
+   703                                           
+   704        19           17      0.9      0.0          out = Table([x.data for x in cols], names=[x.name for x in cols], masked=masked,
+   705         1         9507   9507.0      4.5                      meta=meta['table'])
+   706        10           37      3.7      0.0          for col, out_col in zip(cols, out.columns.values()):
+   707         9            6      0.7      0.0              if masked and hasattr(col, 'mask'):
+   708                                                           out_col.data.mask = col.mask
+   709        36           20      0.6      0.0              for attr in ('format', 'unit', 'description'):
+   710        27           23      0.9      0.0                  if hasattr(col, attr):
+   711                                                               setattr(out_col, attr, getattr(col, attr))
+   712                                           
+   713         1            0      0.0      0.0          return out
+
+File: /home/michael/git/astropy/astropy/io/ascii/core.py
+Function: read at line 833
+Total time: 5.08882 s
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+   833                                               @profile
+   834                                               def read(self, table):
+   835                                                   """Read the ``table`` and return the results in a format determined by
+   836                                                   the ``outputter`` attribute.
+   837                                           
+   838                                                   The ``table`` parameter is any string or object that can be processed
+   839                                                   by the instance ``inputter``.  For the base Inputter class ``table`` can be
+   840                                                   one of:
+   841                                           
+   842                                                   * File name
+   843                                                   * File-like object
+   844                                                   * String (newline separated) with all header and data lines (must have at least 2 lines)
+   845                                                   * List of strings
+   846                                           
+   847                                                   :param table: table input
+   848                                                   :returns: output table
+   849                                                   """
+   850                                                   # If ``table`` is a file then store the name in the ``data``
+   851                                                   # attribute. The ``table`` is a "file" if it is a string
+   852                                                   # without the new line specific to the OS.
+   853         1           10     10.0      0.0          with ignored(TypeError):
+   854                                                       # Strings only
+   855         1            2      2.0      0.0              if os.linesep not in table + '':
+   856         1           13     13.0      0.0                  self.data.table_name = os.path.basename(table)
+   857                                           
+   858                                                   # Same from __init__.  ??? Do these need to be here?
+   859         1            1      1.0      0.0          self.data.header = self.header
+   860         1            0      0.0      0.0          self.header.data = self.data
+   861                                           
+   862                                                   # Get a list of the lines (rows) in the table
+   863         1        18823  18823.0      0.4          self.lines = self.inputter.get_lines(table)
+   864                                           
+   865                                                   # Set self.data.data_lines to a slice of lines contain the data rows
+   866         1        65449  65449.0      1.3          self.data.get_data_lines(self.lines)
+   867                                           
+   868                                                   # Extract table meta values (e.g. keywords, comments, etc).  Updates self.meta.
+   869         1           10     10.0      0.0          self.header.update_meta(self.lines, self.meta)
+   870                                           
+   871                                                   # Get the table column definitions
+   872         1         3887   3887.0      0.1          self.header.get_cols(self.lines)
+   873                                           
+   874         1            1      1.0      0.0          cols = self.header.cols
+   875         1           11     11.0      0.0          self.data.splitter.cols = cols
+   876                                           
+   877    100001      3264206     32.6     64.1          for i, str_vals in enumerate(self.data.get_str_vals()):
+   878    100000        67303      0.7      1.3              if len(str_vals) != len(cols):
+   879                                                           str_vals = self.inconsistent_handler(str_vals, len(cols))
+   880                                           
+   881                                                           # if str_vals is None, we skip this row
+   882                                                           if str_vals is None:
+   883                                                               continue
+   884                                           
+   885                                                           # otherwise, we raise an error only if it is still inconsistent
+   886                                                           if len(str_vals) != len(cols):
+   887                                                               errmsg = ('Number of header columns (%d) inconsistent with '
+   888                                                                         'data columns (%d) at data line %d\n'
+   889                                                                         'Header values: %s\n'
+   890                                                                         'Data values: %s' % (len(cols), len(str_vals), i,
+   891                                                                                              [x.name for x in cols], str_vals))
+   892                                                               raise InconsistentTableError(errmsg)
+   893                                           
+   894   1000000       601504      0.6     11.8              for j, col in enumerate(cols):
+   895    900000       589779      0.7     11.6                  col.str_vals.append(str_vals[j])
+   896                                           
+   897         1       266373 266373.0      5.2          self.data.masks(cols)
+   898         1       211416 211416.0      4.2          table = self.outputter(cols, self.meta)
+   899         1            1      1.0      0.0          self.cols = self.header.cols
+   900                                           
+   901         1            2      2.0      0.0          _apply_include_exclude_names(table, self.names, self.include_names, self.exclude_names,
+   902         1           27     27.0      0.0                                       self.strict_names)
+   903                                           
+   904         1            0      0.0      0.0          return table
+
+File: /home/michael/git/astropy/astropy/io/ascii/core.py
+Function: write at line 938
+Total time: 20.109 s
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+   938                                               @profile
+   939                                               def write(self, table):
+   940                                                   """Write ``table`` as list of strings.
+   941                                           
+   942                                                   :param table: input table data (astropy.table.Table object)
+   943                                                   :returns: list of strings corresponding to ASCII table
+   944                                                   """
+   945                                           
+   946         1            2      2.0      0.0          _apply_include_exclude_names(table, self.names, self.include_names, self.exclude_names,
+   947         1           29     29.0      0.0                                       self.strict_names)
+   948                                           
+   949                                                   # link information about the columns to the writer object (i.e. self)
+   950         1           24     24.0      0.0          self.header.cols = list(six.itervalues(table.columns))
+   951         1           18     18.0      0.0          self.data.cols = list(six.itervalues(table.columns))
+   952                                           
+   953                                                   # Write header and data to lines list
+   954         1            0      0.0      0.0          lines = []
+   955         1           88     88.0      0.0          self.header.write(lines)
+   956         1     20108804 20108804.0    100.0          self.data.write(lines)
+   957                                           
+   958         1            0      0.0      0.0          return lines
+
+File: /home/michael/git/astropy/astropy/table/column.py
+Function: iter_str_vals at line 299
+Total time: 13.3306 s
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+   299                                               @profile
+   300                                               def iter_str_vals(self):
+   301                                                   """
+   302                                                   Return an iterator that yields the string-formatted values of this
+   303                                                   column.
+   304                                           
+   305                                                   Returns
+   306                                                   -------
+   307                                                   str_vals : iterator
+   308                                                       Column values formatted as strings
+   309                                                   """
+   310                                                   # Iterate over formatted values with no max number of lines, no column
+   311                                                   # name, no unit, and ignoring the returned header info in outs.
+   312         9           34      3.8      0.0          _pformat_col_iter = self._formatter._pformat_col_iter
+   313    900009     13094331     14.5     98.2          for str_val in _pformat_col_iter(self, -1, False, False, {}):
+   314    900000       236268      0.3      1.8              yield str_val
+
+File: /home/michael/git/astropy/astropy/table/pprint.py
+Function: _pformat_col_iter at line 159
+Total time: 5.53098 s
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+   159                                               @profile
+   160                                               def _pformat_col_iter(self, col, max_lines, show_name, show_unit, outs):
+   161                                                   """Iterator which yields formatted string representation of column values.
+   162                                           
+   163                                                   Parameters
+   164                                                   ----------
+   165                                                   max_lines : int
+   166                                                       Maximum lines of output (header + data rows)
+   167                                           
+   168                                                   show_name : bool
+   169                                                       Include column name (default=True)
+   170                                           
+   171                                                   show_unit : bool
+   172                                                       Include a header row for unit.  Default is to show a row
+   173                                                       for units only if one or more columns has a defined value
+   174                                                       for the unit.
+   175                                           
+   176                                                   out : dict
+   177                                                       Must be a dict which is used to pass back additional values
+   178                                                       defined within the iterator.
+   179                                                   """
+   180       234          766      3.3      0.0          max_lines, _ = self._get_pprint_size(max_lines, -1)
+   181                                           
+   182       234          293      1.3      0.0          multidims = col.shape[1:]
+   183       234          213      0.9      0.0          if multidims:
+   184                                                       multidim0 = tuple(0 for n in multidims)
+   185                                                       multidim1 = tuple(n - 1 for n in multidims)
+   186                                                       trivial_multidims = np.prod(multidims) == 1
+   187                                           
+   188       234          205      0.9      0.0          i_dashes = None
+   189       234          198      0.8      0.0          i_centers = []  # Line indexes where content should be centered
+   190       234          187      0.8      0.0          n_header = 0
+   191       234          209      0.9      0.0          if show_name:
+   192       225          236      1.0      0.0              i_centers.append(n_header)
+   193                                                       # Get column name (or 'None' if not set)
+   194       225          443      2.0      0.0              col_name = six.text_type(col.name)
+   195       225          201      0.9      0.0              if multidims:
+   196                                                           col_name += ' [{0}]'.format(
+   197                                                               ','.join(six.text_type(n) for n in multidims))
+   198       225          220      1.0      0.0              n_header += 1
+   199       225          184      0.8      0.0              yield col_name
+   200       234          212      0.9      0.0          if show_unit:
+   201                                                       i_centers.append(n_header)
+   202                                                       n_header += 1
+   203                                                       yield six.text_type(col.unit or '')
+   204       234          216      0.9      0.0          if show_unit or show_name:
+   205       225          209      0.9      0.0              i_dashes = n_header
+   206       225          199      0.9      0.0              n_header += 1
+   207       225          184      0.8      0.0              yield '---'
+   208                                           
+   209       234          228      1.0      0.0          max_lines -= n_header
+   210       234          227      1.0      0.0          n_print2 = max_lines // 2
+   211       234          219      0.9      0.0          n_rows = len(col)
+   212                                           
+   213       234          292      1.2      0.0          format_func = _format_funcs.get(col.format, _auto_format_func)
+   214       234          214      0.9      0.0          if len(col) > max_lines:
+   215                                                       i0 = n_print2
+   216                                                       i1 = n_rows - n_print2 - max_lines % 2
+   217                                                   else:
+   218       234          199      0.9      0.0              i0 = len(col)
+   219       234          202      0.9      0.0              i1 = 0
+   220                                           
+   221                                                   # Add formatted values if within bounds allowed by max_lines
+   222    903279       770462      0.9     13.9          for i in xrange(n_rows):
+   223    903045       790402      0.9     14.3              if i < i0 or i > i1:
+   224    903045       791108      0.9     14.3                  if multidims:
+   225                                                               # Prevents colums like Column(data=[[(1,)],[(2,)]], name='a')
+   226                                                               # with shape (n,1,...,1) from being printed as if there was
+   227                                                               # more than one element in a row
+   228                                                               if trivial_multidims:
+   229                                                                   col_str = format_func(col.format, col[(i,) + multidim0])
+   230                                                               else:
+   231                                                                   col_str = (format_func(col.format, col[(i,) + multidim0]) +
+   232                                                                             ' .. ' +
+   233                                                                             format_func(col.format, col[(i,) + multidim1]))
+   234                                                           else:
+   235    903045      2428801      2.7     43.9                      col_str = format_func(col.format, col[i])
+   236    903045       743617      0.8     13.4                  yield col_str
+   237                                                       elif i == i0:
+   238                                                           yield '...'
+   239                                           
+   240       234          221      0.9      0.0          outs['n_header'] = n_header
+   241       234          221      0.9      0.0          outs['i_centers'] = i_centers
+   242       234          196      0.8      0.0          outs['i_dashes'] = i_dashes
+
