@@ -16,7 +16,9 @@ class ASCIISuite:
             'no_header': ascii.NoHeader,
             'commented_header': ascii.CommentedHeader,
             'basic': ascii.Basic,
-            'ipac': ascii.Ipac
+            'ipac': ascii.Ipac,
+            'latex': ascii.Latex,
+            'aastex': ascii.AASTex
             }
         for file_format in self.writers.keys() + ['sextractor']:
             for data_type in ('string', 'int', 'float'):
@@ -135,6 +137,24 @@ class ASCIISuite:
     def time_ipac_read_float(self):
         self.read('ipac', 'float')
 
+    def time_latex_read_string(self):
+        self.read('latex', 'string')
+
+    def time_latex_read_int(self):
+        self.read('latex', 'int')
+
+    def time_latex_read_float(self):
+        self.read('latex', 'float')
+
+    def time_aastex_read_string(self):
+        self.read('aastex', 'string')
+
+    def time_aastex_read_int(self):
+        self.read('aastex', 'int')
+
+    def time_aastex_read_float(self):
+        self.read('aastex', 'float')
+
     def time_csv_write_string(self):
         self.write('csv', 'string')
 
@@ -224,3 +244,21 @@ class ASCIISuite:
 
     def time_ipac_write_float(self):
         self.write('ipac', 'float')
+
+    def time_latex_write_string(self):
+        self.write('latex', 'string')
+
+    def time_latex_write_int(self):
+        self.write('latex', 'int')
+
+    def time_latex_write_float(self):
+        self.write('latex', 'float')
+
+    def time_aastex_write_string(self):
+        self.write('aastex', 'string')
+
+    def time_aastex_write_int(self):
+        self.write('aastex', 'int')
+
+    def time_aastex_write_float(self):
+        self.write('aastex', 'float')
