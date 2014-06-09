@@ -47,6 +47,8 @@ Commented header | 0.121 | 0.131 | 0.116
 Basic | 0.127 | 0.134 | 0.113
 IPAC | 0.130 | 0.157 | 0.118
 SExtractor | 0.127 | 0.134 | 0.117
+LaTeX | 0.139 | 0.152 | 0.133
+AASTex | 0.139 | 0.152 | 0.131
 
 #### Writing ####
 
@@ -62,14 +64,19 @@ No header | 0.371 | 0.519 | 0.194
 Commented header | 0.372 | 0.548 | 0.192
 Basic | 0.383 | 0.504 | 0.196
 IPAC | 0.371 | 0.514 | 0.195
+LaTeX | 0.336 | 0.502 | 0.173
+AASTex | 0.332 | 0.489 | 0.172
 
-As with the comparison benchmarks, the hierarchy of speed seemed to be string > float > int for writing. Reading times didn't vary considerably, but strings tended to be a little faster than floats or ints. Variations across different formats were actually less than I had expected (although RDB and tab-separated were faster for reading), which suggests that the readers and writers share performance bottlenecks. Improving the efficiency of the main algorithm, currently in ``core.py`` and ``ui.py``, should speed up reading and writing across the board.
+As with the comparison benchmarks, the hierarchy of speed seemed to be string > float > int for writing. Reading times didn't vary considerably, but strings tended to be a little faster than floats or ints. Variations across different formats were actually less than I had expected (although RDB and tab-separated were faster for reading and LaTeX/AASTex were faster for writing), which suggests that the readers and writers share performance bottlenecks. Improving the efficiency of the main algorithm, currently in ``core.py`` and ``ui.py``, should speed up reading and writing across the board.
 
 Specific benchmarks
 -------------------
 ####``CoreSuite``####
 * `time_continuation_inputter`: 629 μs
 * `time_whitespace_splitter`: 834 μs
+* `time_default_splitter_call`: 648 ns
+* `time_base_splitter`: 260 ns
+* `time_convert_vals`: 3.85 μs
 
 ####``FixedWidthSuite``####
 * `time_splitter`: 62.8 μs
@@ -86,6 +93,15 @@ Specific benchmarks
 
 ####``SExtractorSuite``####
 * `time_header`: 2.19 ms
+
+####``TableSuite``####
+* `time_str_vals_float`: 335 ns
+* `time_str_vals_int`: 342 ns
+* `time_str_vals_str`: 342 ns
+* `time_table_init_from_list`: 592 μs
+* `time_table_outputter`: 720 μs
+* `mem_table_init`: 6440 bytes
+* `mem_table_outputter`: 6440 bytes
 
 These turned out to be fairly negligible in terms of time, with the exception of `time_data_str_vals` -- perhaps that can be rewritten more efficiently.
 
@@ -109,4 +125,4 @@ Reading
 
 Writing
 -------
-[Here](http://i.imgur.com/HCfw5lJ.png) is a similar screenshot of SnakeViz's output for `ascii.write()`. The innermost circle is `BaseReader.write()` and the enclosing ring is `BaseData.write()`, which takes up virtually all of the writing time. This is split into `BaseColumn.iter_str_vals()` (light blue on the right, taking up 62%) and `DefaultSplitter.join()` (blue-green on the left, taking up 28%), followed by `BaseData._replace_vals()` and `BaseData.write()` itself. `BaseColumn.iter_str_vals()` ultimately boils down to a lambda function repeatedly called in `TableFormatter._pformat_col_iter()` as well as some time spent in `_pformat_col_iter()` itself, while `DefaultSplitter.join()` is split into `BaseSplitter.process_val()`, the `writerow()` method in `csv.writer`, and its own processing.
+[Here](http://i.imgur.com/HCfw5lJ.png) is a similar screenshot of SnakeViz's output for `ascii.write()`. The innermost circle is `BaseReader.write()` and the enclosing ring is `BaseData.write()`, which takes up virtually all of the writing time. This is split into `BaseColumn.iter_str_vals()` (light blue on the right, taking up 62%) and `DefaultSplitter.join()` (blue-green on the left, taking up 28%), followed by `BaseData._replace_vals()` and `BaseData.write()` itself. `BaseColumn.iter_str_vals()` ultimately boils down to a lambda function repeatedly called in `_pformat_col_iter()` as well as some time spent in `_pformat_col_iter()` itself, while `DefaultSplitter.join()` is split into `BaseSplitter.process_val()`, the `writerow()` method in `csv.writer`, and its own processing.
