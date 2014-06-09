@@ -190,6 +190,31 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
    713         1            0      0.0      0.0          return out
 
 File: /home/michael/git/astropy/astropy/io/ascii/core.py
+Function: _convert_vals at line 622
+Total time: 0.220158 s
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+   622                                               @profile
+   623                                               def _convert_vals(self, cols):
+   624        10           14      1.4      0.0          for col in cols:
+   625         9           18      2.0      0.0              converters = self.converters.get(col.name,
+   626         9            8      0.9      0.0                                               self.default_converters)
+   627         9          125     13.9      0.1              col.converters = self._validate_and_copy(col, converters)
+   628                                           
+   629        27           64      2.4      0.0              while not hasattr(col, 'data'):
+   630        18           11      0.6      0.0                  try:
+   631        18           10      0.6      0.0                      converter_func, converter_type = col.converters[0]
+   632        18           17      0.9      0.0                      if not issubclass(converter_type, col.type):
+   633                                                                   raise TypeError()
+   634        18       219799  12211.1     99.8                      col.data = converter_func(col.str_vals)
+   635         9           28      3.1      0.0                      col.type = converter_type
+   636         9           35      3.9      0.0                  except (TypeError, ValueError):
+   637         9           29      3.2      0.0                      col.converters.pop(0)
+   638                                                           except IndexError:
+   639                                                               raise ValueError('Column %s failed to convert' % col.name)
+
+File: /home/michael/git/astropy/astropy/io/ascii/core.py
 Function: read at line 833
 Total time: 5.08882 s
 

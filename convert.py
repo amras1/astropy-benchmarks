@@ -10,7 +10,9 @@ writer_dict = {
     'rdb': ascii.Rdb,
     'tab': ascii.Tab,
     'basic': ascii.Basic,
-    'ipac': ascii.Ipac
+    'ipac': ascii.Ipac,
+    'latex': ascii.Latex,
+    'aastex': ascii.AASTex
 }
 
 for ftype in writer_dict:
