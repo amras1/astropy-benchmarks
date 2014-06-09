@@ -1,5 +1,65 @@
 {
     "benchmarks": {
+        "asciibench.ASCIISuite.time_aastex_read_float": {
+            "code": "def time_aastex_read_float(self):\n    self.read('aastex', 'float')\n", 
+            "goal_time": 2.0, 
+            "name": "asciibench.ASCIISuite.time_aastex_read_float", 
+            "number": 0, 
+            "repeat": 3, 
+            "timeout": 60.0, 
+            "type": "time", 
+            "unit": "seconds"
+        }, 
+        "asciibench.ASCIISuite.time_aastex_read_int": {
+            "code": "def time_aastex_read_int(self):\n    self.read('aastex', 'int')\n", 
+            "goal_time": 2.0, 
+            "name": "asciibench.ASCIISuite.time_aastex_read_int", 
+            "number": 0, 
+            "repeat": 3, 
+            "timeout": 60.0, 
+            "type": "time", 
+            "unit": "seconds"
+        }, 
+        "asciibench.ASCIISuite.time_aastex_read_string": {
+            "code": "def time_aastex_read_string(self):\n    self.read('aastex', 'string')\n", 
+            "goal_time": 2.0, 
+            "name": "asciibench.ASCIISuite.time_aastex_read_string", 
+            "number": 0, 
+            "repeat": 3, 
+            "timeout": 60.0, 
+            "type": "time", 
+            "unit": "seconds"
+        }, 
+        "asciibench.ASCIISuite.time_aastex_write_float": {
+            "code": "def time_aastex_write_float(self):\n    self.write('aastex', 'float')\n", 
+            "goal_time": 2.0, 
+            "name": "asciibench.ASCIISuite.time_aastex_write_float", 
+            "number": 0, 
+            "repeat": 3, 
+            "timeout": 60.0, 
+            "type": "time", 
+            "unit": "seconds"
+        }, 
+        "asciibench.ASCIISuite.time_aastex_write_int": {
+            "code": "def time_aastex_write_int(self):\n    self.write('aastex', 'int')\n", 
+            "goal_time": 2.0, 
+            "name": "asciibench.ASCIISuite.time_aastex_write_int", 
+            "number": 0, 
+            "repeat": 3, 
+            "timeout": 60.0, 
+            "type": "time", 
+            "unit": "seconds"
+        }, 
+        "asciibench.ASCIISuite.time_aastex_write_string": {
+            "code": "def time_aastex_write_string(self):\n    self.write('aastex', 'string')\n", 
+            "goal_time": 2.0, 
+            "name": "asciibench.ASCIISuite.time_aastex_write_string", 
+            "number": 0, 
+            "repeat": 3, 
+            "timeout": 60.0, 
+            "type": "time", 
+            "unit": "seconds"
+        }, 
         "asciibench.ASCIISuite.time_basic_read_float": {
             "code": "def time_basic_read_float(self):\n    self.read('basic', 'float')\n", 
             "goal_time": 2.0, 
@@ -420,6 +480,66 @@
             "type": "time", 
             "unit": "seconds"
         }, 
+        "asciibench.ASCIISuite.time_latex_read_float": {
+            "code": "def time_latex_read_float(self):\n    self.read('latex', 'float')\n", 
+            "goal_time": 2.0, 
+            "name": "asciibench.ASCIISuite.time_latex_read_float", 
+            "number": 0, 
+            "repeat": 3, 
+            "timeout": 60.0, 
+            "type": "time", 
+            "unit": "seconds"
+        }, 
+        "asciibench.ASCIISuite.time_latex_read_int": {
+            "code": "def time_latex_read_int(self):\n    self.read('latex', 'int')\n", 
+            "goal_time": 2.0, 
+            "name": "asciibench.ASCIISuite.time_latex_read_int", 
+            "number": 0, 
+            "repeat": 3, 
+            "timeout": 60.0, 
+            "type": "time", 
+            "unit": "seconds"
+        }, 
+        "asciibench.ASCIISuite.time_latex_read_string": {
+            "code": "def time_latex_read_string(self):\n    self.read('latex', 'string')\n", 
+            "goal_time": 2.0, 
+            "name": "asciibench.ASCIISuite.time_latex_read_string", 
+            "number": 0, 
+            "repeat": 3, 
+            "timeout": 60.0, 
+            "type": "time", 
+            "unit": "seconds"
+        }, 
+        "asciibench.ASCIISuite.time_latex_write_float": {
+            "code": "def time_latex_write_float(self):\n    self.write('latex', 'float')\n", 
+            "goal_time": 2.0, 
+            "name": "asciibench.ASCIISuite.time_latex_write_float", 
+            "number": 0, 
+            "repeat": 3, 
+            "timeout": 60.0, 
+            "type": "time", 
+            "unit": "seconds"
+        }, 
+        "asciibench.ASCIISuite.time_latex_write_int": {
+            "code": "def time_latex_write_int(self):\n    self.write('latex', 'int')\n", 
+            "goal_time": 2.0, 
+            "name": "asciibench.ASCIISuite.time_latex_write_int", 
+            "number": 0, 
+            "repeat": 3, 
+            "timeout": 60.0, 
+            "type": "time", 
+            "unit": "seconds"
+        }, 
+        "asciibench.ASCIISuite.time_latex_write_string": {
+            "code": "def time_latex_write_string(self):\n    self.write('latex', 'string')\n", 
+            "goal_time": 2.0, 
+            "name": "asciibench.ASCIISuite.time_latex_write_string", 
+            "number": 0, 
+            "repeat": 3, 
+            "timeout": 60.0, 
+            "type": "time", 
+            "unit": "seconds"
+        }, 
         "asciibench.ASCIISuite.time_noheader_read_float": {
             "code": "def time_noheader_read_float(self):\n    self.read('no_header', 'float')\n", 
             "goal_time": 2.0, 
@@ -830,10 +950,50 @@
             "type": "time", 
             "unit": "seconds"
         }, 
+        "corebench.CoreSuite.time_base_splitter": {
+            "code": "def time_base_splitter(self):\n    core.BaseSplitter().process_val(self.line)\n", 
+            "goal_time": 2.0, 
+            "name": "corebench.CoreSuite.time_base_splitter", 
+            "number": 0, 
+            "repeat": 3, 
+            "timeout": 60.0, 
+            "type": "time", 
+            "unit": "seconds"
+        }, 
         "corebench.CoreSuite.time_continuation_inputter": {
             "code": "def time_continuation_inputter(self):\n    core.ContinuationLinesInputter().process_lines(self.lines)\n", 
             "goal_time": 2.0, 
             "name": "corebench.CoreSuite.time_continuation_inputter", 
+            "number": 0, 
+            "repeat": 3, 
+            "timeout": 60.0, 
+            "type": "time", 
+            "unit": "seconds"
+        }, 
+        "corebench.CoreSuite.time_convert_vals": {
+            "code": "def time_convert_vals(self):\n    core.TableOutputter()._convert_vals(self.cols)\n", 
+            "goal_time": 2.0, 
+            "name": "corebench.CoreSuite.time_convert_vals", 
+            "number": 0, 
+            "repeat": 3, 
+            "timeout": 60.0, 
+            "type": "time", 
+            "unit": "seconds"
+        }, 
+        "corebench.CoreSuite.time_default_splitter_call": {
+            "code": "def time_default_splitter_call(self):\n    core.DefaultSplitter()(self.csv_line)\n", 
+            "goal_time": 2.0, 
+            "name": "corebench.CoreSuite.time_default_splitter_call", 
+            "number": 0, 
+            "repeat": 3, 
+            "timeout": 60.0, 
+            "type": "time", 
+            "unit": "seconds"
+        }, 
+        "corebench.CoreSuite.time_default_splitter_join": {
+            "code": "def time_default_splitter_join(self):\n    core.DefaultSplitter().join(self.vals)\n", 
+            "goal_time": 2.0, 
+            "name": "corebench.CoreSuite.time_default_splitter_join", 
             "number": 0, 
             "repeat": 3, 
             "timeout": 60.0, 
@@ -930,8 +1090,22 @@
             "type": "time", 
             "unit": "seconds"
         }, 
+        "tablebench.TableSuite.mem_table_init": {
+            "code": "def mem_table_init(self):\n    return table.Table(self.lst)\n", 
+            "name": "tablebench.TableSuite.mem_table_init", 
+            "timeout": 60.0, 
+            "type": "memory", 
+            "unit": "bytes"
+        }, 
+        "tablebench.TableSuite.mem_table_outputter": {
+            "code": "def mem_table_outputter(self):\n    return self.outputter(self.cols, {'table': {}})\n", 
+            "name": "tablebench.TableSuite.mem_table_outputter", 
+            "timeout": 60.0, 
+            "type": "memory", 
+            "unit": "bytes"
+        }, 
         "tablebench.TableSuite.time_str_vals_float": {
-            "code": "def time_str_vals_float(self):\n    self.cols[1].iter_str_vals()\n", 
+            "code": "def time_str_vals_float(self):\n    self.table_cols[1].iter_str_vals()\n", 
             "goal_time": 2.0, 
             "name": "tablebench.TableSuite.time_str_vals_float", 
             "number": 0, 
@@ -941,7 +1115,7 @@
             "unit": "seconds"
         }, 
         "tablebench.TableSuite.time_str_vals_int": {
-            "code": "def time_str_vals_int(self):\n    self.cols[0].iter_str_vals()\n", 
+            "code": "def time_str_vals_int(self):\n    self.table_cols[0].iter_str_vals()\n", 
             "goal_time": 2.0, 
             "name": "tablebench.TableSuite.time_str_vals_int", 
             "number": 0, 
@@ -951,9 +1125,29 @@
             "unit": "seconds"
         }, 
         "tablebench.TableSuite.time_str_vals_str": {
-            "code": "def time_str_vals_str(self):\n    self.cols[2].iter_str_vals()\n", 
+            "code": "def time_str_vals_str(self):\n    self.table_cols[2].iter_str_vals()\n", 
             "goal_time": 2.0, 
             "name": "tablebench.TableSuite.time_str_vals_str", 
+            "number": 0, 
+            "repeat": 3, 
+            "timeout": 60.0, 
+            "type": "time", 
+            "unit": "seconds"
+        }, 
+        "tablebench.TableSuite.time_table_init_from_list": {
+            "code": "def time_table_init_from_list(self):\n    self.table._init_from_list(self.table_cols, ['1', '2', '3'],\n                               [None, None, None], 3, True)\n", 
+            "goal_time": 2.0, 
+            "name": "tablebench.TableSuite.time_table_init_from_list", 
+            "number": 0, 
+            "repeat": 3, 
+            "timeout": 60.0, 
+            "type": "time", 
+            "unit": "seconds"
+        }, 
+        "tablebench.TableSuite.time_table_outputter": {
+            "code": "def time_table_outputter(self):\n    self.outputter(self.cols, {'table': {}})\n", 
+            "goal_time": 2.0, 
+            "name": "tablebench.TableSuite.time_table_outputter", 
             "number": 0, 
             "repeat": 3, 
             "timeout": 60.0, 
@@ -962,7 +1156,9 @@
         }
     }, 
     "date_to_hash": {
-        "1401933121000": "e874ae17"
+        "1401933121000": "e874ae17", 
+        "1402136849000": "481884c1", 
+        "1402153163000": "e8e03f74"
     }, 
     "machines": {
         "michael-Gazelle-Professional": {
