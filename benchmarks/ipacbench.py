@@ -13,7 +13,8 @@ class IPACSuite:
         f = open('benchmarks/files/ipac/string.txt')
         self.lines = f.read().split('\n')
         f.close()
-        self.table = ascii.read('benchmarks/files/ipac/string.txt', format='ipac')
+        self.table = ascii.read('benchmarks/files/ipac/string.txt',
+                                format='ipac', guess=False)
         
     def time_splitter(self):
         self.splitter.join(self.vals, self.widths)

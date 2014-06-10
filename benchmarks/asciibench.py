@@ -32,7 +32,7 @@ class ASCIISuite:
                 
     def read(self, file_format, data_type):
         return ascii.read(StringIO(self.data[(file_format, data_type)]),
-                          format=file_format)
+                          format=file_format, guess=False)
 
     def write(self, file_format, data_type):
         ascii.write(self.tables[(file_format, data_type)], self.output,

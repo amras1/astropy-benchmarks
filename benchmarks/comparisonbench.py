@@ -15,22 +15,22 @@ class ComparisonSuite:
             self.data[datatype] = f.read()
             f.close()
             self.tables[datatype] = ascii.read(StringIO(self.data[datatype]),
-                                               format='basic')
+                                               format='basic', guess=False)
             self.frames[datatype] = pandas.read_csv(StringIO(
                                     self.data[datatype]), sep=' ')
         self.out = StringIO()
                                   
     def time_astropy_float(self):
-        ascii.read(StringIO(self.data['float']), format='basic')
+        ascii.read(StringIO(self.data['float']), format='basic', guess=False)
                                   
     def time_astropy_int(self):
-        ascii.read(StringIO(self.data['int']), format='basic')
+        ascii.read(StringIO(self.data['int']), format='basic', guess=False)
                                   
     def time_astropy_string(self):
-        ascii.read(StringIO(self.data['string']), format='basic')
+        ascii.read(StringIO(self.data['string']), format='basic', guess=False)
 
     def time_astropy_mixture(self):
-        ascii.read(StringIO(self.data['mixture']), format='basic')
+        ascii.read(StringIO(self.data['mixture']), format='basic', guess=False)
 
     def time_astropy_write_float(self):
         ascii.write(self.tables['float'], self.out, Writer=ascii.Basic)
