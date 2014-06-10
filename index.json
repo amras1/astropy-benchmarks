@@ -790,6 +790,46 @@
             "type": "time", 
             "unit": "seconds"
         }, 
+        "comparisonbench.ComparisonSuite.time_astropy_write_float": {
+            "code": "def time_astropy_write_float(self):\n    ascii.write(self.tables['float'], self.out, Writer=ascii.Basic)\n", 
+            "goal_time": 2.0, 
+            "name": "comparisonbench.ComparisonSuite.time_astropy_write_float", 
+            "number": 0, 
+            "repeat": 3, 
+            "timeout": 60.0, 
+            "type": "time", 
+            "unit": "seconds"
+        }, 
+        "comparisonbench.ComparisonSuite.time_astropy_write_int": {
+            "code": "def time_astropy_write_int(self):\n    ascii.write(self.tables['int'], self.out, Writer=ascii.Basic)\n", 
+            "goal_time": 2.0, 
+            "name": "comparisonbench.ComparisonSuite.time_astropy_write_int", 
+            "number": 0, 
+            "repeat": 3, 
+            "timeout": 60.0, 
+            "type": "time", 
+            "unit": "seconds"
+        }, 
+        "comparisonbench.ComparisonSuite.time_astropy_write_mixture": {
+            "code": "def time_astropy_write_mixture(self):\n    ascii.write(self.tables['mixture'], self.out, Writer=ascii.Basic)\n", 
+            "goal_time": 2.0, 
+            "name": "comparisonbench.ComparisonSuite.time_astropy_write_mixture", 
+            "number": 0, 
+            "repeat": 3, 
+            "timeout": 60.0, 
+            "type": "time", 
+            "unit": "seconds"
+        }, 
+        "comparisonbench.ComparisonSuite.time_astropy_write_string": {
+            "code": "def time_astropy_write_string(self):\n    ascii.write(self.tables['string'], self.out, Writer=ascii.Basic)\n", 
+            "goal_time": 2.0, 
+            "name": "comparisonbench.ComparisonSuite.time_astropy_write_string", 
+            "number": 0, 
+            "repeat": 3, 
+            "timeout": 60.0, 
+            "type": "time", 
+            "unit": "seconds"
+        }, 
         "comparisonbench.ComparisonSuite.time_numpy_genfromtxt_float": {
             "code": "def time_numpy_genfromtxt_float(self):\n    np.genfromtxt(StringIO(self.data['float']), delimiter=' ')\n", 
             "goal_time": 2.0, 
@@ -870,6 +910,46 @@
             "type": "time", 
             "unit": "seconds"
         }, 
+        "comparisonbench.ComparisonSuite.time_numpy_savetxt_float": {
+            "code": "def time_numpy_savetxt_float(self):\n    np.savetxt(self.out, self.tables['float'])\n", 
+            "goal_time": 2.0, 
+            "name": "comparisonbench.ComparisonSuite.time_numpy_savetxt_float", 
+            "number": 0, 
+            "repeat": 3, 
+            "timeout": 60.0, 
+            "type": "time", 
+            "unit": "seconds"
+        }, 
+        "comparisonbench.ComparisonSuite.time_numpy_savetxt_int": {
+            "code": "def time_numpy_savetxt_int(self):\n    np.savetxt(self.out, self.tables['int'], fmt='%i')\n", 
+            "goal_time": 2.0, 
+            "name": "comparisonbench.ComparisonSuite.time_numpy_savetxt_int", 
+            "number": 0, 
+            "repeat": 3, 
+            "timeout": 60.0, 
+            "type": "time", 
+            "unit": "seconds"
+        }, 
+        "comparisonbench.ComparisonSuite.time_numpy_savetxt_mixture": {
+            "code": "def time_numpy_savetxt_mixture(self):\n    np.savetxt(self.out, self.tables['mixture'], fmt='%i %f %s ' \\\n               '%i %f %s %i %f %s')\n", 
+            "goal_time": 2.0, 
+            "name": "comparisonbench.ComparisonSuite.time_numpy_savetxt_mixture", 
+            "number": 0, 
+            "repeat": 3, 
+            "timeout": 60.0, 
+            "type": "time", 
+            "unit": "seconds"
+        }, 
+        "comparisonbench.ComparisonSuite.time_numpy_savetxt_string": {
+            "code": "def time_numpy_savetxt_string(self):\n    np.savetxt(self.out, self.tables['string'], fmt='%s')\n", 
+            "goal_time": 2.0, 
+            "name": "comparisonbench.ComparisonSuite.time_numpy_savetxt_string", 
+            "number": 0, 
+            "repeat": 3, 
+            "timeout": 60.0, 
+            "type": "time", 
+            "unit": "seconds"
+        }, 
         "comparisonbench.ComparisonSuite.time_pandas_read_csv_float": {
             "code": "def time_pandas_read_csv_float(self):\n    pandas.read_csv(StringIO(self.data['float']), sep=' ')\n", 
             "goal_time": 2.0, 
@@ -944,6 +1024,46 @@
             "code": "def time_pandas_read_table_string(self):\n    pandas.read_table(StringIO(self.data['string']), sep=' ')\n", 
             "goal_time": 2.0, 
             "name": "comparisonbench.ComparisonSuite.time_pandas_read_table_string", 
+            "number": 0, 
+            "repeat": 3, 
+            "timeout": 60.0, 
+            "type": "time", 
+            "unit": "seconds"
+        }, 
+        "comparisonbench.ComparisonSuite.time_pandas_write_float": {
+            "code": "def time_pandas_write_float(self):\n    self.frames['float'].to_csv(self.out, sep=' ')\n", 
+            "goal_time": 2.0, 
+            "name": "comparisonbench.ComparisonSuite.time_pandas_write_float", 
+            "number": 0, 
+            "repeat": 3, 
+            "timeout": 60.0, 
+            "type": "time", 
+            "unit": "seconds"
+        }, 
+        "comparisonbench.ComparisonSuite.time_pandas_write_int": {
+            "code": "def time_pandas_write_int(self):\n    self.frames['int'].to_csv(self.out, sep=' ')\n", 
+            "goal_time": 2.0, 
+            "name": "comparisonbench.ComparisonSuite.time_pandas_write_int", 
+            "number": 0, 
+            "repeat": 3, 
+            "timeout": 60.0, 
+            "type": "time", 
+            "unit": "seconds"
+        }, 
+        "comparisonbench.ComparisonSuite.time_pandas_write_mixture": {
+            "code": "def time_pandas_write_mixture(self):\n    self.frames['mixture'].to_csv(self.out, sep=' ')\n", 
+            "goal_time": 2.0, 
+            "name": "comparisonbench.ComparisonSuite.time_pandas_write_mixture", 
+            "number": 0, 
+            "repeat": 3, 
+            "timeout": 60.0, 
+            "type": "time", 
+            "unit": "seconds"
+        }, 
+        "comparisonbench.ComparisonSuite.time_pandas_write_string": {
+            "code": "def time_pandas_write_string(self):\n    self.frames['string'].to_csv(self.out, sep=' ')\n", 
+            "goal_time": 2.0, 
+            "name": "comparisonbench.ComparisonSuite.time_pandas_write_string", 
             "number": 0, 
             "repeat": 3, 
             "timeout": 60.0, 
@@ -1090,13 +1210,6 @@
             "type": "time", 
             "unit": "seconds"
         }, 
-        "tablebench.TableSuite.mem_table_init": {
-            "code": "def mem_table_init(self):\n    return table.Table(self.lst)\n", 
-            "name": "tablebench.TableSuite.mem_table_init", 
-            "timeout": 60.0, 
-            "type": "memory", 
-            "unit": "bytes"
-        }, 
         "tablebench.TableSuite.mem_table_outputter": {
             "code": "def mem_table_outputter(self):\n    return self.outputter(self.cols, {'table': {}})\n", 
             "name": "tablebench.TableSuite.mem_table_outputter", 
@@ -1134,16 +1247,6 @@
             "type": "time", 
             "unit": "seconds"
         }, 
-        "tablebench.TableSuite.time_table_init_from_list": {
-            "code": "def time_table_init_from_list(self):\n    self.table._init_from_list(self.table_cols, ['1', '2', '3'],\n                               [None, None, None], 3, True)\n", 
-            "goal_time": 2.0, 
-            "name": "tablebench.TableSuite.time_table_init_from_list", 
-            "number": 0, 
-            "repeat": 3, 
-            "timeout": 60.0, 
-            "type": "time", 
-            "unit": "seconds"
-        }, 
         "tablebench.TableSuite.time_table_outputter": {
             "code": "def time_table_outputter(self):\n    self.outputter(self.cols, {'table': {}})\n", 
             "goal_time": 2.0, 
@@ -1156,8 +1259,6 @@
         }
     }, 
     "date_to_hash": {
-        "1401933121000": "e874ae17", 
-        "1402136849000": "481884c1", 
         "1402153163000": "e8e03f74"
     }, 
     "machines": {
