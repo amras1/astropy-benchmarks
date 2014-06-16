@@ -95,25 +95,6 @@ for i in range(lines):
 	data += 1
 return result # or result.view(np.bool_)
 ```
-* `_try_double`:
-```
-lines = line_end - line_start
-result = np.empty(lines, dtype=np.float64)
-data = <double *> result.data
-cdef:
-	coliter_t it
-	char *word
-	int error
-coliter_setup(&it, parser, col, line_start)
-for i in range(lines):
-	word = COLITER_NEXT(it)
-	data[i] = str_to_int64(word, INT64_MIN, INT64_MAX, &error)
-	if error != 0:
-		if error == ERROR_OVERFLOW:
-			raise OverflowError(word)
-		return None, None
-return result
-```
 ### C ###
 * `tokenize_all_rows`:
 ```
