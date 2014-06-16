@@ -3,6 +3,9 @@ from cStringIO import StringIO
 import numpy as np
 import pandas
 
+class NoStripSplitter(ascii.DefaultSplitter):
+    process_val = None
+
 class ComparisonSuite:
     def setup(self):
         self.mix_dtype = np.dtype({'names': '123456789', 'formats':
@@ -31,6 +34,10 @@ class ComparisonSuite:
 
     def time_astropy_mixture(self):
         ascii.read(StringIO(self.data['mixture']), format='basic', guess=False)
+
+    def time_astropy_mixture_no_strip(self):
+        ascii.read(StringIO(self.data['mixture']), format='basic',
+                   data_Splitter=NoStripSplitter, guess=False)
 
     def time_astropy_write_float(self):
         ascii.write(self.tables['float'], self.out, Writer=ascii.Basic)

@@ -38,22 +38,82 @@ for i in range(self.parser.lines):
 	num_cols = max(num_cols, self.parsers.line_fields[i])
 results = {}
 for i in range(self.table_width):
-	results[i] = self._convert_tokens(i)
+	results[i] = self._convert_tokens(i, self.parser_start, self.parser.lines)
 ```
 * `TextReader._convert_tokens`:
 ```
 col_res = None
-for dt in ['<i8', '<f8', '|b1', '|08']:
-	col_res = self._convert_with_dtype(dt, i)
+for dt in ['<i8', '<f8', '|b1', '|O8']:
+	col_res = self._convert_with_dtype(dt, i, start, end)
 	if col_res is not None:
 		break
 return col_res
 ```
 * `TextReader._convert_with_dtype`:
 ```
-
+if dtype[1] == 'i':
+	return _try_int64(self.parser, i, start, end)
+elif dtype[1] == 'f':
+	return _try_double(self.parser, i, start, end)
+elif dtype[1] == 'b':
+	return _try_bool(self.parser, i, start, end)
+elif dtype[1] == 'O':
+	return self._string_convert(i, start, end)
 ```
-
+* `_try_int64`, `_try_double`, `_try_bool`:
+```
+lines = line_end - line_start
+result = np.empty(lines, dtype=np.int64) # np.float64, np.uint8
+data = <int64_t *> result.data # <double *>, <uint8_t *>
+cdef:
+	coliter_t it
+	char *word
+	int error
+coliter_setup(&it, parser, col, line_start)
+for i in range(lines):
+	word = COLITER_NEXT(it)
+	data[i] = str_to_int64(word, INT64_MIN, INT64_MAX, &error)
+	# or error = to_double(word, data, parser.sci, parser.decimal)
+	# or error = to_boolean(word, data)
+	# int:
+	if error != 0:
+		if error == ERROR_OVERFLOW:
+			raise OverflowError(word)
+		return None, None
+	# double:
+	if error != 1:
+		if strcasecmp(word, cinf) == 0:
+			data[0] = INF
+		elif strcasecmp(word, cneginf) == 0:
+			data[0] = NEGINF
+		else:
+			return None, None
+		data += 1
+	# bool:
+	if error != 0:
+		return None, None
+	data += 1
+return result # or result.view(np.bool_)
+```
+* `_try_double`:
+```
+lines = line_end - line_start
+result = np.empty(lines, dtype=np.float64)
+data = <double *> result.data
+cdef:
+	coliter_t it
+	char *word
+	int error
+coliter_setup(&it, parser, col, line_start)
+for i in range(lines):
+	word = COLITER_NEXT(it)
+	data[i] = str_to_int64(word, INT64_MIN, INT64_MAX, &error)
+	if error != 0:
+		if error == ERROR_OVERFLOW:
+			raise OverflowError(word)
+		return None, None
+return result
+```
 ### C ###
 * `tokenize_all_rows`:
 ```
