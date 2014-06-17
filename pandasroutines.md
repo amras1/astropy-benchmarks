@@ -3,12 +3,19 @@ Pandas
 
 ### Python ###
 
+#### Reading ####
 * `read_table` and `read_csv` come from `_make_parser_function()`, just with different default separation
 * `_make_parser_function()` creates a function that calls `_read()`
 * `_read()` calls `TextFileReader.read()`
 * `TextFileReader` uses an engine for reading, which is `CParserWrapper` by default (`PythonParser` and `FixedWidthFieldParser` are others)
 * `TextFileReader.read()` calls the `read()` function of its engine, instantiates a `DataFrame` with `col_dict`, `columns`, `index`
 * `CParserWrapper.read()` calls `TextReader.read()` from `pandas.parser` (Cython/C)
+
+#### Writing ####
+* `to_csv` calls `CSVFormatter.save()`, which calls `_save()`
+* `save` calls `_save_header()`, then splits data into chunks of length `chunksize` and loops on `_save_chunk(start, end)`
+* `_save_header()` uses `csv.writer`
+* `_save_chunk()` splits `DataFrame` blocks into chunks internally and calls `lib.write_csv_rows` (Cython) which again falls back on `csv.writer`
 
 ### Cython ###
 * `TextReader.__cinit__`:
