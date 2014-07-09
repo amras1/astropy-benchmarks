@@ -8,9 +8,9 @@ Parsing Overview
 * `setup_tokenizer()` passes a supplied source object (filename, file-like object, single string, or list of strings) to the tokenizer for future processing.
 * `read_header()` uses the tokenizer to get column names, which it stores in `self.names`. If `header=None`, it tries to detect the number of columns from the first line of data and autogenerates the column names. `self.names` is then adjusted based on `include_names` and `exclude_names`, as unwanted columns are thrown out.
 * `read()` invokes the tokenizer, then calls `_convert_data()` and returns the result.
-* `_convert_data()` tries calling `convert_int()`, `convert_float()`, and `convert_str()` on each column in that order, returning the first one which works correctly.
-* `convert_int()` puts column data in an `ndarray` with `dtype=np.int_` and operates on an `int *` pointer to its `data` attribute. It loops through each field in the column (by calling C functions) and replaces values if necessary as determined by `fill_values`, `fill_include_names`, and `fill_exclude_names`; in this case, it also marks the column as masked. It then calls `str_to_long()`, a C function, to try to perform conversion. If this fails, `convert_int` raises a `ValueError`. If it successfully converts all of the data, `convert_int()` returns either an `ndarray` or a `masked_array`, depending on whether any values are masked.
-* `convert_float()` and `convert_str()` work similarly, except `convert_str()` performs no conversion and simply creates an `ndarray` with `dtype='|S{0}'.format(n)` where `n` is the length of the longest field value.
+* `_convert_data()` tries calling `_convert_int()`, `_convert_float()`, and `_convert_str()` on each column in that order, returning the first one which works correctly.
+* `_convert_int()` puts column data in an `ndarray` with `dtype=np.int_` and operates on a `long *` pointer to its `data` attribute. It loops through each field in the column (by calling C functions) and replaces values if necessary as determined by `fill_values`, `fill_include_names`, and `fill_exclude_names`; in this case, it also marks the column as masked. It then calls `str_to_long()`, a C function, to try to perform conversion. If this fails, `_convert_int` raises a `ValueError`. If it successfully converts all of the data, `_convert_int()` returns either an `ndarray` or a `masked_array`, depending on whether any values are masked.
+* `_convert_float()` and `_convert_str()` work similarly, except `_convert_str()` performs no conversion and simply creates an `ndarray` with `dtype='|S{0}'.format(n)` where `n` is the length of the longest field value.
 
 
 ##C##
@@ -26,7 +26,7 @@ while not done with parsing:
         repeat = 0
         switch (state):
         START_LINE:
-            if c is whitespace:
+            if c is a newline or c is whitespace and strip_whitespace_lines:
                 do nothing
             else if c == comment:
                 state = COMMENT
@@ -34,17 +34,21 @@ while not done with parsing:
             state = START_FIELD
             repeat = True
         START_FIELD:
-            if c is whitespace:
+            if c is whitespace and strip_whitespace_fields:
                 do nothing
             else if c == delimiter:
                 end field
             else if c == quotechar:
                 state = START_QUOTED_FIELD
+            else if c == '\n':
+                handle different whitespace cases
+                end line (and possibly field)
+                state = START_LINE
             else:
                 state = FIELD
                 repeat = True
         case START_QUOTED_FIELD:
-            if c is whitespace:
+            if c is whitespace and strip_whitespace_fields:
                 do nothing
             else if c == quotechar:
                 end field
@@ -52,7 +56,9 @@ while not done with parsing:
                 state = QUOTED_FIELD
                 repeat = True
         case FIELD:
-            if c == delimiter:
+            if c == comment and col == 0 and no non-whitespace encountered:
+                state = COMMENT
+            else if c == delimiter:
                 end field
                 state = START_FIELD
             else if c == '\n':
@@ -68,7 +74,7 @@ while not done with parsing:
             else:
                 add c to the current column string
         case QUOTED_FIELD_NEWLINE:
-            if c is whitespace or '\n':
+            if c is whitespace and strip_whitespace_lines or c == '\n':
                 do nothing
             else if c == quotechar:
                 state = FIELD

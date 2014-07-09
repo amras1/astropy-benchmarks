@@ -40,16 +40,16 @@ class ComparisonSuite:
                    data_Splitter=NoStripSplitter, guess=False)
 
     def time_astropy_write_float(self):
-        ascii.write(self.tables['float'], self.out, Writer=ascii.Basic)
+        ascii.write(self.tables['float'], self.out, Writer=ascii.Basic, use_fast_writer=True)
                                   
     def time_astropy_write_int(self):
-        ascii.write(self.tables['int'], self.out, Writer=ascii.Basic)
+        ascii.write(self.tables['int'], self.out, Writer=ascii.Basic, use_fast_writer=True)
                                   
     def time_astropy_write_string(self):
-        ascii.write(self.tables['string'], self.out, Writer=ascii.Basic)
+        ascii.write(self.tables['string'], self.out, Writer=ascii.Basic, use_fast_writer=True)
 
     def time_astropy_write_mixture(self):
-        ascii.write(self.tables['mixture'], self.out, Writer=ascii.Basic)
+        ascii.write(self.tables['mixture'], self.out, Writer=ascii.Basic, use_fast_writer=True)
 
     def time_numpy_loadtxt_float(self):
         np.loadtxt(StringIO(self.data['float']), delimiter=' ')
